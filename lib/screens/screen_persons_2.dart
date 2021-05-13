@@ -12,7 +12,7 @@ class Person {
   Person(this.name, this.description, this.status, this.picture);
 }
 
-class Persons extends StatelessWidget {
+class Persons1 extends StatelessWidget {
   List<Person> persons = [
     Person('Рик Санчез', 'Человек, Мужской', true, 'assets/images/rik.png'),
     Person('Директор Агенства', 'Человек, Мужской', true,
@@ -28,88 +28,95 @@ class Persons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ThemeColors.background,
-      body: (Column(
-        children: [
-          Container(
-            child: TextField(
-              decoration: InputDecoration(
+      body: SafeArea(
+        child: Column(
+          children: [
+            Container(
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Найти персонажа',
+                  hintStyle: TextStyle(color:ThemeColors.text2,fontSize: 16),
                   prefixIcon: Icon(
-                    Icons.search,
-                    color: ThemeColors.text2,
-                  ),
-                  suffixIcon: Icon(
-                    Icons.filter_alt_outlined,
-                    color: ThemeColors.text2,
-                  )),
-            ),
-            decoration: BoxDecoration(
-              color: ThemeColors.search1,
-              borderRadius: BorderRadius.all(
-                Radius.circular(24),
-              ),
-            ),
-            height: 48,
-            margin: EdgeInsets.only(left: 16, right: 16, bottom: 23, top: 54),
-          ),
-          ListTile(
-              leading: Text('ВСЕГО ПЕРСОНАЖЕЙ: ${persons.length}',
-                  style: TextStyle(color: ThemeColors.text2, fontSize: 16)),
-              trailing: Icon(
-                Icons.list,
-                color: ThemeColors.text2,
-              )),
-          SizedBox(height: (persons.length/2 *210) ,
-            child: GridView.builder(
-                //physics: NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, mainAxisSpacing: 24, crossAxisSpacing: 18),
-                itemCount: persons.length,
-                itemBuilder: (_, index) {
-                  return Column(
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(left: 16, bottom: 24, right: 16),
-                        child: Column(
-                          children: [
-                            Container(
-                              child: ClipOval(
-                                child: Image.asset(
-                                  persons[index].picture,
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                            height: 120,width: 120,),
-                            SizedBox(height: 18,width: 3,),
-                            Column(
-                              children: [
-                                if (persons[index].status == true)
-                                  Text('живой',
-                                      style:
-                                          TextStyle(color: Colors.greenAccent)),
-                                if (persons[index].status == false)
-                                  Text('мертвый',
-                                      style: TextStyle(color: Colors.red)),
-                                Text(
-                                  persons[index].name,
-                                  style: TextStyle(
-                                      fontSize: 16, color: ThemeColors.text1),
-                                ),
-                                Text(persons[index].description,
-                                    style: TextStyle(
-                                        fontSize: 12, color: ThemeColors.text2)),
-                              ],
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                            ),
-                          ],
+                      Icons.search,
+                      color: ThemeColors.text2,
+                    ),
+                    suffixIcon:  Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(height: 24,width: 1,color: ThemeColors.text2,),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 13,right: 19),
+                          child: Icon(
+                            Icons.filter_alt_outlined,
+                            color: ThemeColors.text2,
+                          ),
                         ),
-                      ),
-                    ],
-                  );
-                }),
-          ),
-        ],
-      )),
+                      ], mainAxisAlignment: MainAxisAlignment.end,
+                    ),),
+              ),
+              decoration: BoxDecoration(
+                color: ThemeColors.search1,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(24),
+                ),
+              ),
+              height: 48,
+              margin: EdgeInsets.only(left: 16, right: 16, bottom: 23, top: 16),
+            ),
+            ListTile(
+                leading: Text('ВСЕГО ПЕРСОНАЖЕЙ: ${persons.length}',
+                    style: TextStyle(color: ThemeColors.text2, fontSize: 16)),
+                trailing: Icon(
+                  Icons.list,
+                  color: ThemeColors.text2,
+                )),
+            Expanded(
+              child: GridView.builder(
+                  //physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 24,
+                      crossAxisSpacing: 18),
+                  itemCount: persons.length,
+                  itemBuilder: (_, index) {
+                    return Column(
+                      children: [
+                        SizedBox(
+                          height: 120,
+                          width: 120,
+                          child: ClipOval(
+                            child: Image.asset(
+                              persons[index].picture,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+
+                        ),
+                        SizedBox(
+                          height: 18,
+                          width: 3,
+                        ),
+                        if (persons[index].status)
+                            Text('живой',
+                              style: TextStyle(color: Colors.greenAccent))
+                        else
+                          Text('мертвый',
+                              style: TextStyle(color: Colors.red)),
+                        Text(
+                          persons[index].name,
+                          style: TextStyle(
+                              fontSize: 16, color: ThemeColors.text1),
+                        ),
+                        Text(persons[index].description,
+                            style: TextStyle(
+                                fontSize: 12, color: ThemeColors.text2)),
+                      ],
+                    );
+                  }),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
