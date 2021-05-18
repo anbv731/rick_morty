@@ -58,7 +58,7 @@ class _Persons1State extends State<Persons1> {
                           child: GestureDetector(
                             onTap: () {
                               Navigator.push(
-                                  context, MaterialPageRoute(builder: (context) => Character()));
+                                  context, MaterialPageRoute(builder: (context) => Character(persons[index])));
                             },
                             child: Row(
                               children: [
