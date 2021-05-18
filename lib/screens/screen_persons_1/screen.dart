@@ -3,7 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rick_morty/components/search.dart';
 import 'package:rick_morty/data/person.dart';
 import 'package:rick_morty/data/persons_loader.dart';
-import 'package:rick_morty/screens/screen_persons_2/screen_persons_2.dart';
+import 'package:rick_morty/screens/character/screen.dart';
+import 'package:rick_morty/screens/screen_persons_2/screen.dart';
 
 import '../../theme/color_theme.dart';
 
@@ -54,40 +55,46 @@ class _Persons1State extends State<Persons1> {
                         return Padding(
                           padding: const EdgeInsets.only(
                               left: 16, bottom: 24, right: 16),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 74,
-                                height: 74,
-                                child: ClipOval(
-                                  child: Image.network(
-                                    persons[index].image,
-                                    fit: BoxFit.contain,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context, MaterialPageRoute(builder: (context) => Character()));
+                            },
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  width: 74,
+                                  height: 74,
+                                  child: ClipOval(
+                                    child: Image.network(
+                                      persons[index].image,
+                                      fit: BoxFit.contain,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 18,
-                              ),
-                              Column(
-                                children: [
-                                  Text(persons[index].status,
-                                      style:
-                                          TextStyle(color: Colors.greenAccent)),
-                                  Text(
-                                    persons[index].name,
-                                    style: TextStyle(
-                                        fontSize: 16, color: ThemeColors.text1),
-                                  ),
-                                  Text(
-                                      '${persons[index].species} , ${persons[index].gender}',
+                                SizedBox(
+                                  width: 18,
+                                ),
+                                Column(
+                                  children: [
+                                    Text(persons[index].status,
+                                        style:
+                                            TextStyle(color: Colors.greenAccent)),
+                                    Text(
+                                      persons[index].name,
                                       style: TextStyle(
-                                          fontSize: 12,
-                                          color: ThemeColors.text2)),
-                                ],
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                              ),
-                            ],
+                                          fontSize: 16, color: ThemeColors.text1),
+                                    ),
+                                    Text(
+                                        '${persons[index].species} , ${persons[index].gender}',
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            color: ThemeColors.text2)),
+                                  ],
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       })

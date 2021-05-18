@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_morty/screens/start_screen_1.dart';
+import 'file:///C:/Users/83208/AndroidStudioProjects/rick_morty/lib/screens/start_screen/screen.dart';
 
 import 'data/persons_loader.dart';
 
