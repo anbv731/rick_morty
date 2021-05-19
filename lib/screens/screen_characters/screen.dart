@@ -1,10 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rick_morty/components/search.dart';
-import 'package:rick_morty/data/person.dart';
 import 'package:rick_morty/data/persons_loader.dart';
 import 'package:rick_morty/screens/character/screen.dart';
-import 'package:rick_morty/screens/screen_persons_2/screen.dart';
 
 import '../../theme/color_theme.dart';
 
@@ -58,7 +57,7 @@ class _Persons1State extends State<Persons1> {
                           child: GestureDetector(
                             onTap: () {
                               Navigator.push(
-                                  context, MaterialPageRoute(builder: (context) => Character(persons[index])));
+                                  context, CupertinoPageRoute(builder: (context) => Character(persons[index])));
                             },
                             child: Row(
                               children: [
