@@ -40,7 +40,7 @@ class Search extends StatelessWidget {
         ),
       ),
       height: 48,
-      margin: EdgeInsets.only(left: 16, right: 16, bottom: 23, top: 54),
+     // margin: EdgeInsets.only(left: 16, right: 16, bottom: 23, top: 54),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rick_morty/components/search.dart';
+import 'file:///C:/Users/83208/AndroidStudioProjects/rick_morty/lib/screens/screen_characters/widgets/search.dart';
 import 'package:rick_morty/data/persons_loader.dart';
 import 'package:rick_morty/screens/character/screen.dart';
 
@@ -31,20 +31,27 @@ class _Persons1State extends State<Persons1> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ThemeColors.background,
+      appBar: AppBar(
+        elevation: 0,
+          backgroundColor: Colors.black,
+          automaticallyImplyLeading: false,
+        title:Search(),
+        bottom:  PreferredSize(preferredSize: Size.fromHeight(60),
+        child: ListTile(
+            leading: Text('ВСЕГО ПЕРСОНАЖЕЙ: ${persons?.length ?? 0}',
+                style: TextStyle(color: ThemeColors.text2, fontSize: 16)),
+            trailing: InkWell(
+                onTap: () {
+                  setState(() {
+                    isList = !isList;
+                  });
+                },
+                child: SvgPicture.asset('assets/svg_icons/group.svg'))),)
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            Search(),
-            ListTile(
-                leading: Text('ВСЕГО ПЕРСОНАЖЕЙ: ${persons?.length ?? 0}',
-                    style: TextStyle(color: ThemeColors.text2, fontSize: 16)),
-                trailing: InkWell(
-                    onTap: () {
-                      setState(() {
-                        isList = !isList;
-                      });
-                    },
-                    child: SvgPicture.asset('assets/svg_icons/group.svg'))),
+
             Expanded(
               child: isList
                   ? ListView.builder(
@@ -57,7 +64,10 @@ class _Persons1State extends State<Persons1> {
                           child: GestureDetector(
                             onTap: () {
                               Navigator.push(
-                                  context, CupertinoPageRoute(builder: (context) => Character(persons[index])));
+                                  context,
+                                  CupertinoPageRoute(
+                                      builder: (context) =>
+                                          Character(persons[index])));
                             },
                             child: Row(
                               children: [
@@ -77,12 +87,13 @@ class _Persons1State extends State<Persons1> {
                                 Column(
                                   children: [
                                     Text(persons[index].status,
-                                        style:
-                                            TextStyle(color: Colors.greenAccent)),
+                                        style: TextStyle(
+                                            color: Colors.greenAccent)),
                                     Text(
                                       persons[index].name,
                                       style: TextStyle(
-                                          fontSize: 16, color: ThemeColors.text1),
+                                          fontSize: 16,
+                                          color: ThemeColors.text1),
                                     ),
                                     Text(
                                         '${persons[index].species} , ${persons[index].gender}',
@@ -104,34 +115,42 @@ class _Persons1State extends State<Persons1> {
                           crossAxisSpacing: 18),
                       itemCount: persons?.length ?? 0,
                       itemBuilder: (_, index) {
-                        return Column(
-                          children: [
-                            SizedBox(
-                              height: 120,
-                              width: 120,
-                              child: ClipOval(
-                                child: Image.network(
-                                  persons[index].image,
-                                  fit: BoxFit.contain,
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) =>
+                                        Character(persons[index])));
+                          },
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 18),
+                                child: SizedBox(
+                                  height: 120,
+                                  width: 120,
+                                  child: ClipOval(
+                                    child: Image.network(
+                                      persons[index].image,
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 18,
-                              width: 3,
-                            ),
-                            Text(persons[index].status,
-                                style: TextStyle(color: Colors.greenAccent)),
-                            Text(
-                              persons[index].name,
-                              style: TextStyle(
-                                  fontSize: 16, color: ThemeColors.text1),
-                            ),
-                            Text(
-                                '${persons[index].species} , ${persons[index].gender}',
+                              Text(persons[index].status,
+                                  style: TextStyle(color: Colors.greenAccent)),
+                              Text(
+                                persons[index].name,
                                 style: TextStyle(
-                                    fontSize: 12, color: ThemeColors.text2)),
-                          ],
+                                    fontSize: 16, color: ThemeColors.text1),
+                              ),
+                              Text(
+                                  '${persons[index].species} , ${persons[index].gender}',
+                                  style: TextStyle(
+                                      fontSize: 12, color: ThemeColors.text2)),
+                            ],
+                          ),
                         );
                       }),
             ),

@@ -3,7 +3,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:rick_morty/screens/start_screen/screen.dart';
+import 'package:rick_morty/screens/splash_screen/screen.dart';
 
 import 'data/persons_loader.dart';
 
