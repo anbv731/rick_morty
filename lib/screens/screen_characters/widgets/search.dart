@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:rick_morty/theme/color_theme.dart';
 
 class Search extends StatelessWidget {
@@ -9,9 +10,9 @@ class Search extends StatelessWidget {
         decoration: InputDecoration(
           hintText: 'Найти персонажа',
           hintStyle: TextStyle(color: ThemeColors.text2, fontSize: 16),
-          prefixIcon: Icon(
-            Icons.search,
-            color: ThemeColors.text2,
+          prefixIcon: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: SvgPicture.asset('assets/svg_icons/search.svg',height: 24,width:24,),
           ),
           suffixIcon: Row(
             mainAxisSize: MainAxisSize.min,
@@ -23,10 +24,7 @@ class Search extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 13, right: 19),
-                child: Icon(
-                  Icons.filter_alt_outlined,
-                  color: ThemeColors.text2,
-                ),
+                child: SvgPicture.asset('assets/svg_icons/filter.svg')
               ),
             ],
             mainAxisAlignment: MainAxisAlignment.end,

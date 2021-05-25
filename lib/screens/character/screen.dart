@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:rick_morty/data/persons_loader.dart';
 import 'package:rick_morty/screens/character/widgets/avatar.dart';
 import 'package:rick_morty/screens/character/widgets/description.dart';
@@ -15,7 +16,28 @@ class Character extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(102),
+        child: AppBar(
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          automaticallyImplyLeading: false,
+          flexibleSpace: Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 24, top: 40),
+              child: FloatingActionButton(
+                backgroundColor: ThemeColors.search1,
+                elevation: 1,
+                onPressed: () => {Navigator.pop(context)},
+                child: SvgPicture.asset('assets/svg_icons/arrow_back.svg'),
+              ),
+            ),
+          ),
+        ),
+      ),
+      backgroundColor: ThemeColors.background,
       body: SingleChildScrollView(
         child: Column(
           children: [

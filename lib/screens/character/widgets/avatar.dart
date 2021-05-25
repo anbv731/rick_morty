@@ -1,7 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rick_morty/data/persons_loader.dart';
+import 'package:rick_morty/theme/color_theme.dart';
 
 class Avatar extends StatelessWidget {
   Avatar(this.person);
@@ -38,7 +40,7 @@ class Avatar extends StatelessWidget {
             top: MediaQuery.of(context).size.height / 4 - 80,
             child: CircleAvatar(
                 radius: 80,
-                backgroundColor: Colors.black,
+                backgroundColor: ThemeColors.background,
                 child: ClipOval(
                   child: Image.network(
                     person.image,
@@ -47,16 +49,6 @@ class Avatar extends StatelessWidget {
                     fit: BoxFit.fill,
                   ),
                 )),
-          ),
-          Positioned(
-            left: 24,
-            top: 54,
-            child: FloatingActionButton(
-              backgroundColor: Colors.black,
-              elevation: 1,
-              onPressed: () => {Navigator.pop(context)},
-              child: Icon(Icons.arrow_back_sharp),
-            ),
           ),
         ],
       ),

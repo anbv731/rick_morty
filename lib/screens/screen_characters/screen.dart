@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rick_morty/screens/screen_characters/widgets/search.dart';
 import '../../theme/color_theme.dart';
-import 'file:///C:/Users/83208/AndroidStudioProjects/rick_morty/lib/screens/screen_characters/widgets/search.dart';
+
 import 'package:rick_morty/data/persons_loader.dart';
 import 'package:rick_morty/screens/character/screen.dart';
 import 'package:rick_morty/screens/screen_characters/widgets/persons_grid.dart';
@@ -36,13 +37,13 @@ class _Persons1State extends State<Persons1> {
       backgroundColor: ThemeColors.background,
       appBar: AppBar(
         elevation: 0,
-          backgroundColor: Colors.black,
+          backgroundColor: ThemeColors.background,
           automaticallyImplyLeading: false,
         title:Search(),
         bottom:  PreferredSize(preferredSize: Size.fromHeight(60),
         child: ListTile(
             leading: Text('ВСЕГО ПЕРСОНАЖЕЙ: ${persons?.length ?? 0}',
-                style: TextStyle(color: ThemeColors.text2, fontSize: 16)),
+                style: TextStyle(color: ThemeColors.text2, fontSize: 10,height: 1.6)),
             trailing: InkWell(
                 onTap: () {
                   setState(() {
@@ -50,20 +51,13 @@ class _Persons1State extends State<Persons1> {
                   });
                 },
                 child: isList
-                ?SvgPicture.asset('assets/svg_icons/group.svg'):
-            Icon(Icons.list,color: ThemeColors.text2,))),)
+                ?SvgPicture.asset('assets/svg_icons/grid.svg'):
+                SvgPicture.asset('assets/svg_icons/list.svg'))),)
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-
-            Expanded(
-              child: isList
-                  ? PersonsList(persons:persons)
-                  : PersonsGrid(persons: persons,)
-            ),
-          ],
-        ),
+        child: isList
+            ? PersonsList(persons:persons)
+            : PersonsGrid(persons: persons,),
       ),
     );
   }

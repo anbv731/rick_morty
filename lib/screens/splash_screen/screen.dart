@@ -6,6 +6,7 @@ import 'package:rick_morty/theme/color_theme.dart';
 class StartScreen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return GestureDetector(
       onTap: () {
         Navigator.push(

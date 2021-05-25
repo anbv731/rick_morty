@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rick_morty/theme/text_theme.dart';
 
 import '../../../data/persons_loader.dart';
 import '../../../theme/color_theme.dart';
@@ -13,10 +14,9 @@ class PersonsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 24,
-            crossAxisSpacing: 18),
+            crossAxisCount: 2,childAspectRatio: 0.85),
         itemCount: persons?.length ?? 0,
         itemBuilder: (_, index) {
           return GestureDetector(
@@ -24,8 +24,7 @@ class PersonsGrid extends StatelessWidget {
               Navigator.push(
                   context,
                   CupertinoPageRoute(
-                      builder: (context) =>
-                          Character(persons[index])));
+                      builder: (context) => Character(persons[index])));
             },
             child: Column(
               children: [
@@ -42,17 +41,13 @@ class PersonsGrid extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(persons[index].status,
-                    style: TextStyle(color: Colors.greenAccent)),
+                Text(persons[index].status, style: ThemeText.green),
                 Text(
                   persons[index].name,
-                  style: TextStyle(
-                      fontSize: 16, color: ThemeColors.text1),
+                  style: ThemeText.name,
                 ),
-                Text(
-                    '${persons[index].species} , ${persons[index].gender}',
-                    style: TextStyle(
-                        fontSize: 12, color: ThemeColors.text2)),
+                Text('${persons[index].species} , ${persons[index].gender}',
+                    style: ThemeText.description),
               ],
             ),
           );

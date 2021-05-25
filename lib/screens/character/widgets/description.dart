@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rick_morty/data/persons_loader.dart';
 import 'package:rick_morty/theme/color_theme.dart';
+import 'package:rick_morty/theme/text_theme.dart';
 
 class Description extends StatelessWidget {
   Description(this.person);
@@ -10,27 +12,24 @@ class Description extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16,right: 16),
+      padding: const EdgeInsets.only(left: 16, right: 16),
       child: Column(
         children: [
           Text(
-            person.name,
-            style: TextStyle(fontSize: 34, color: Colors.white),
+            person.name,textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 34, height:40/34,fontWeight: FontWeight.w400, color: Colors.white),
           ),
           SizedBox(
             height: 4,
           ),
-          Text(
-            person.status,
-            style: TextStyle(fontSize: 10, color: Colors.greenAccent),
-          ),
+          Text(person.status, style: ThemeText.green),
           SizedBox(
             height: 36,
           ),
           Text(
             'Главный протагонист мультсериала "Рик  и Морти". Безумный ученый,чей алкоголизм, безрассудство и социопатия заставляют беспокоится семью его дочери.',
             textAlign: TextAlign.left,
-            style: TextStyle(color: Colors.white, fontSize: 13),
+            style: ThemeText.description,
           ),
           SizedBox(
             height: 24,
@@ -46,10 +45,10 @@ class Description extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Пол:',
-                            style: TextStyle(
-                                fontSize: 12, color: ThemeColors.text2)),
+                            style: ThemeText.fieldDescription),
                         Text('${person.gender}',
-                            style: TextStyle(fontSize: 14, color: Colors.white)),
+                            style:
+                            ThemeText.description1),
                       ],
                     ),
                   ),
@@ -59,15 +58,15 @@ class Description extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: SizedBox(
-                    height: 40,
+                    height: 56,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Раса:',
-                            style: TextStyle(
-                                fontSize: 12, color: ThemeColors.text2)),
+                            style: ThemeText.fieldDescription),
                         Text('${person.species}',
-                            style: TextStyle(fontSize: 14, color: Colors.white)),
+                            style:
+                            ThemeText.description1),
                       ],
                     ),
                   ),
@@ -78,7 +77,7 @@ class Description extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 20),
             child: SizedBox(
-              height: 36,
+              height: 50,
               child: Row(
                 children: [
                   Expanded(
@@ -86,24 +85,20 @@ class Description extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Место рождения:',
-                            style: TextStyle(
-                                fontSize: 12, color: ThemeColors.text2)),
+                            style: ThemeText.fieldDescription),
                         Text('${person.origin.name}',
-                            style: TextStyle(fontSize: 14, color: Colors.white)),
+                            style:
+                            ThemeText.description1),
                       ],
                     ),
                   ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 10,
-                    color: Colors.white,
-                  ),
+                  SvgPicture.asset('assets/svg_icons/vector.svg'),
                 ],
               ),
             ),
           ),
           SizedBox(
-            height: 36,
+            height: 50,
             child: Row(
               children: [
                 Expanded(
@@ -111,18 +106,13 @@ class Description extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Местоположение:',
-                          style:
-                              TextStyle(fontSize: 12, color: ThemeColors.text2)),
+                          style: ThemeText.fieldDescription),
                       Text('${person.location.name}',
-                          style: TextStyle(fontSize: 14, color: Colors.white)),
+                          style: ThemeText.description1),
                     ],
                   ),
                 ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 10,
-                  color: Colors.white,
-                ),
+                SvgPicture.asset('assets/svg_icons/vector.svg'),
               ],
             ),
           ),
