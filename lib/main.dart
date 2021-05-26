@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rick_morty/screens/splash_screen/screen.dart';
 
-import 'data/persons_loader.dart';
+import 'data/person_model.dart';
 
 void main() {
 

@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rick_morty/data/persons_loader.dart';
+import 'package:rick_morty/data/person_model.dart';
 import 'package:rick_morty/theme/color_theme.dart';
 
 class Avatar extends StatelessWidget {

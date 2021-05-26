@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rick_morty/screens/screen_characters/widgets/search.dart';
 import '../../theme/color_theme.dart';
 
-import 'package:rick_morty/data/persons_loader.dart';
+import 'package:rick_morty/data/person_model.dart';
 import 'package:rick_morty/screens/character/screen.dart';
 import 'package:rick_morty/screens/screen_characters/widgets/persons_grid.dart';
 import 'package:rick_morty/screens/screen_characters/widgets/persons_list.dart';
