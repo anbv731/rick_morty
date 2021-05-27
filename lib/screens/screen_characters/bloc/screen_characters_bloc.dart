@@ -1,16 +1,16 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart' as http;
 import 'package:rick_morty/data/person_model.dart';
 import 'package:rick_morty/screens/screen_characters/bloc/screen_characters_event.dart';
 import 'dart:convert' as convert;
 import 'package:rick_morty/screens/screen_characters/bloc/screen_characters_state.dart';
 
-part 'screen_characters_bloc.freezed.dart';
+
 
 class ScreenCharactersBloc
     extends Bloc<ScreenCharactersEvent, ScreenCharactersState> {
-  ScreenCharactersBloc() : super(ScreenCharactersState.initial());
+  ScreenCharactersBloc() : super(InitialScreenCharactersState());
   bool isList = true;
   List<Person> results = [];
 
@@ -18,15 +18,16 @@ class ScreenCharactersBloc
   Stream<ScreenCharactersState> mapEventToState(
     ScreenCharactersEvent event,
   ) async* {
-    yield* event.map(
-      initial: (event) => _mapInitialScreenCharactersEvent(event),
-      changeView: (event) => _mapChangeViewScreenCharactersEvent(event),
-    );
+    if (event is InitialScreenCharactersEvent){
+      yield* _mapInitialScreenCharactersEvent();
+    }
+    if (event is ChangeViewScreenCharactersEvent){
+      yield* _mapChangeViewScreenCharactersEvent(event);
+    }
   }
 
-  Stream<ScreenCharactersState> _mapInitialScreenCharactersEvent(
-      _InitialScreenCharactersEvent event) async* {
-    yield ScreenCharactersState.loading();
+  Stream<ScreenCharactersState> _mapInitialScreenCharactersEvent() async* {
+    yield LoadingScreenCharactersState();
 
     try {
       http.Response response = await http.get(
@@ -56,48 +57,27 @@ class ScreenCharactersBloc
       }
     } catch (ex) {
       print(ex);
-      yield ScreenCharactersState.error();
+      yield ErrorScreenCharactersState();
     }
 
     /// Возвращаем состояние с данными
-    yield ScreenCharactersState.data(
+    yield DataScreenCharactersState(
       charactersList: results,
       isList: isList,
     );
   }
 
-  Stream<ScreenCharactersState> _mapChangeViewScreenCharactersEvent(
-      _ChangeViewScreenCharactersEvent event) async* {
-    yield ScreenCharactersState.loading();
+  Stream<ScreenCharactersState> _mapChangeViewScreenCharactersEvent(ChangeViewScreenCharactersEvent event) async* {
+    yield LoadingScreenCharactersState();
     isList = !event.isList;
-    yield ScreenCharactersState.data(
+    yield DataScreenCharactersState(
       charactersList: results,
       isList: isList,
     );
   }
 }
 
-@freezed
-abstract class ScreenCharactersState with _$ScreenCharactersState {
-  const factory ScreenCharactersState.data({
-    @required List<Person> charactersList,
-    @required bool isList,
-  }
-  ) = _DataScreenCharactersState;
 
-  const factory ScreenCharactersState.initial() = _InitialScreenCharactersState;
 
-  const factory ScreenCharactersState.loading() = _LoadingScreenCharactersState;
 
-  const factory ScreenCharactersState.error() = _ErrorScreenCharactersState;
-}
 
-@freezed
-abstract class ScreenCharactersEvent with _$ScreenCharactersEvent {
-  const factory ScreenCharactersEvent.initial() = _InitialScreenCharactersEvent;
-
-  const factory ScreenCharactersEvent.changeView({
-    @required bool isList,
-  }
-  ) = _ChangeViewScreenCharactersEvent;
-}

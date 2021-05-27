@@ -58,7 +58,7 @@ class Description extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: SizedBox(
-                    height: 56,
+                    height: 40,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -76,6 +76,32 @@ class Description extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 20),
+            child: InkWell(
+              onTap: (){},
+              child: SizedBox(
+                height: 50,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Место рождения:',
+                              style: ThemeText.fieldDescription),
+                          Text('${person.origin.name}',
+                              style:
+                              ThemeText.description1),
+                        ],
+                      ),
+                    ),
+                    SvgPicture.asset('assets/svg_icons/vector.svg'),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: (){},
             child: SizedBox(
               height: 50,
               child: Row(
@@ -84,36 +110,16 @@ class Description extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Место рождения:',
+                        Text('Местоположение:',
                             style: ThemeText.fieldDescription),
-                        Text('${person.origin.name}',
-                            style:
-                            ThemeText.description1),
+                        Text('${person.location.name}',
+                            style: ThemeText.description1),
                       ],
                     ),
                   ),
                   SvgPicture.asset('assets/svg_icons/vector.svg'),
                 ],
               ),
-            ),
-          ),
-          SizedBox(
-            height: 50,
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Местоположение:',
-                          style: ThemeText.fieldDescription),
-                      Text('${person.location.name}',
-                          style: ThemeText.description1),
-                    ],
-                  ),
-                ),
-                SvgPicture.asset('assets/svg_icons/vector.svg'),
-              ],
             ),
           ),
         ],
