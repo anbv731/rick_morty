@@ -17,13 +17,13 @@ class Description extends StatelessWidget {
         children: [
           Text(
             person.name,textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 34, height:40/34,fontWeight: FontWeight.w400, color: Colors.white),
+            style: const TextStyle(fontSize: 34, height:40/34,fontWeight: FontWeight.w400, color: Colors.white),
           ),
-          SizedBox(
+          const SizedBox(
             height: 4,
           ),
           Text(person.status, style: ThemeText.green),
-          SizedBox(
+          const SizedBox(
             height: 36,
           ),
           Text(
@@ -31,7 +31,7 @@ class Description extends StatelessWidget {
             textAlign: TextAlign.left,
             style: ThemeText.description,
           ),
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
           Row(
@@ -39,7 +39,7 @@ class Description extends StatelessWidget {
               Expanded(
                 child: Align(
                   alignment: Alignment.centerLeft,
-                  child: SizedBox(
+                  child:  SizedBox(
                     height: 40,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

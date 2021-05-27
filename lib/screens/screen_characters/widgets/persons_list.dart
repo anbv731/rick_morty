@@ -38,7 +38,7 @@ class PersonsList extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 18,
                   ),
                   Column(

@@ -65,9 +65,9 @@ class Persons1 extends StatelessWidget {
             );
           }
           if (state is ErrorScreenCharactersState) {
-            return Icon(Icons.close, size: 200);
+            return const Icon(Icons.close, size: 200);
           }
-          return SizedBox();
+          return const SizedBox();
         },
       ),
     );
