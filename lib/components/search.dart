@@ -4,11 +4,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:rick_morty/theme/color_theme.dart';
 
 class Search extends StatelessWidget {
+  Search(this.hintText);
+  String hintText;
   Widget build(BuildContext context) {
     return Container(
       child: TextField(
         decoration: InputDecoration(
-          hintText: 'Найти персонажа',
+          hintText: hintText,
           hintStyle: TextStyle(color: ThemeColors.text2, fontSize: 16),
           prefixIcon: Padding(
             padding: const EdgeInsets.all(12.0),
@@ -17,9 +19,9 @@ class Search extends StatelessWidget {
           suffixIcon: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                height: 24,
-                width: 1,
+              VerticalDivider(
+                indent: 12,
+                endIndent: 12,
                 color: ThemeColors.text2,
               ),
               Padding(

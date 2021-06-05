@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rick_morty/screens/screen_characters/bloc/screen_characters_bloc.dart';
 import 'package:rick_morty/screens/screen_characters/bloc/screen_characters_event.dart';
 import 'package:rick_morty/screens/screen_characters/bloc/screen_characters_state.dart';
-import 'package:rick_morty/screens/screen_characters/widgets/search.dart';
+import 'file:///C:/Users/tatiana/StudioProjects/rick_morty/lib/components/search.dart';
 import '../../theme/color_theme.dart';
 
 import 'package:rick_morty/data/person_model.dart';
@@ -35,7 +35,7 @@ class Persons1 extends StatelessWidget {
                 elevation: 0,
                 backgroundColor: ThemeColors.background,
                 automaticallyImplyLeading: false,
-                title: Search(),
+                title: Search('Найти персонажа'),
                 bottom: PreferredSize(
                   preferredSize: Size.fromHeight(60),
                   child: ListTile(

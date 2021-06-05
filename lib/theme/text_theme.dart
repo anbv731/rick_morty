@@ -38,4 +38,9 @@ class ThemeText {
       fontWeight: FontWeight.w500,
       color: Colors.white,
       height: 24 / 16);
+  static const TextStyle location = TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w500,
+      color: Colors.white,
+      height: 28 / 20);
 }
