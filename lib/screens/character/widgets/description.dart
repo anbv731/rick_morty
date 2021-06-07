@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rick_morty/data/person_model.dart';
+import 'package:rick_morty/screens/location/screen.dart';
 import 'package:rick_morty/theme/color_theme.dart';
 import 'package:rick_morty/theme/text_theme.dart';
 
@@ -101,7 +103,13 @@ class Description extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: (){},
+            onTap: (){
+
+                Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (context) => Location()));
+              },
             child: SizedBox(
               height: 50,
               child: Row(

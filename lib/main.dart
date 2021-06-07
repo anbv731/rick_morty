@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:rick_morty/screens/location/screen.dart';
 import 'package:rick_morty/screens/locations/screen.dart';
 import 'package:rick_morty/screens/splash_screen/screen.dart';
 

@@ -43,4 +43,9 @@ class ThemeText {
       fontWeight: FontWeight.w500,
       color: Colors.white,
       height: 28 / 20);
+  static const TextStyle locatinName = TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.w700,
+      color: Colors.white,
+      height: 32 / 24);
 }

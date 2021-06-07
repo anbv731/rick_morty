@@ -17,8 +17,6 @@ class Character extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      // floatingActionButton: FloatingActionButton(child: Text('s')),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.startDocked.getOffset(ScaffoldPrelayoutGeometry(bottomSheetSize: ., contentBottom: contentBottom, contentTop: contentTop, floatingActionButtonSize: floatingActionButtonSize, minInsets: minInsets, minViewPadding: minViewPadding, scaffoldSize: scaffoldSize, snackBarSize: snackBarSize, textDirection: textDirection)),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(102),
         child: AppBar(
