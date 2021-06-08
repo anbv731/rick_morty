@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rick_morty/screens/episodes/screen.dart';
 import 'package:rick_morty/screens/splash_screen/screen.dart';
 import 'package:rick_morty/theme/color_theme.dart';
 import 'package:rick_morty/theme/text_theme.dart';
@@ -26,7 +27,7 @@ class ListEpisods extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.push(context,
-                        CupertinoPageRoute(builder: (context) => StartScreen1()));
+                        CupertinoPageRoute(builder: (context) => Episodes()));
                   },
                   child: Text(
                     'Все эпизоды',

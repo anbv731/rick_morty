@@ -48,4 +48,9 @@ class ThemeText {
       fontWeight: FontWeight.w700,
       color: Colors.white,
       height: 32 / 24);
+  static const TextStyle season = TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+      color: Colors.white,
+      height: 24 / 14);
 }

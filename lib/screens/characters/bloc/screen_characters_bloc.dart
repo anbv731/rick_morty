@@ -2,9 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:rick_morty/data/person_model.dart';
-import 'package:rick_morty/screens/screen_characters/bloc/screen_characters_event.dart';
+import 'package:rick_morty/screens/characters/bloc/screen_characters_event.dart';
+import 'package:rick_morty/screens/characters/bloc/screen_characters_state.dart';
 import 'dart:convert' as convert;
-import 'package:rick_morty/screens/screen_characters/bloc/screen_characters_state.dart';
 
 
 

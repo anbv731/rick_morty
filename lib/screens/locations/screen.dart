@@ -16,7 +16,7 @@ class Locations extends StatelessWidget {
         elevation: 0,
         backgroundColor: ThemeColors.background,
         automaticallyImplyLeading: false,
-        title: Search('Найти локацию'),
+        title: Search('Найти локацию',true),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(60),
           child: ListTile(

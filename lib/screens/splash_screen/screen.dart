@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_morty/screens/screen_characters/screen.dart';
+import 'package:rick_morty/screens/characters/screen.dart';
 
 import 'package:rick_morty/theme/color_theme.dart';
 

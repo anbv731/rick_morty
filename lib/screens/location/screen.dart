@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rick_morty/data/person_model.dart';
 import 'package:rick_morty/screens/character/screen.dart';
-import 'package:rick_morty/screens/screen_characters/widgets/persons_list.dart';
 import 'package:rick_morty/theme/color_theme.dart';
 import 'package:rick_morty/theme/text_theme.dart';
 
