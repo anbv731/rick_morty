@@ -1,8 +1,8 @@
-abstract class ScreenCharactersEvent {}
+abstract class ScreenEpisodesEvent {}
 
-class InitialScreenCharactersEvent extends ScreenCharactersEvent {}
+class InitialScreenCharactersEvent extends ScreenEpisodesEvent {}
 
-class ChangeViewScreenCharactersEvent extends ScreenCharactersEvent {
+class ChangeViewScreenCharactersEvent extends ScreenEpisodesEvent {
   final bool isList;
 
   ChangeViewScreenCharactersEvent({this.isList});

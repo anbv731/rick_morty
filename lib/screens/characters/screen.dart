@@ -23,7 +23,7 @@ class Persons1 extends StatelessWidget {
     return BlocProvider<ScreenCharactersBloc>(
       create: (BuildContext context) =>
           bloc..add(InitialScreenCharactersEvent()),
-      child: BlocBuilder<ScreenCharactersBloc, ScreenCharactersState>(
+      child: BlocBuilder<ScreenCharactersBloc, ScreenEpisodesState>(
         builder: (_, state) {
           if (state is LoadingScreenCharactersState) {
             return Center(child: CircularProgressIndicator());

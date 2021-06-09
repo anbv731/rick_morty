@@ -1,35 +1,35 @@
 import 'package:equatable/equatable.dart';
 import 'package:rick_morty/data/person_model.dart';
 
-abstract class ScreenCharactersState extends Equatable {
-  const ScreenCharactersState();
+abstract class ScreenEpisodesState extends Equatable {
+  const ScreenEpisodesState();
 
   @override
   List<Object> get props => [];
 }
 
-class InitialScreenCharactersState extends ScreenCharactersState {
-  InitialScreenCharactersState();
+class InitialScreenEpisodesState extends ScreenEpisodesState {
+  InitialScreenEpisodesState();
 
   @override
   List<Object> get props => [];
 }
 
-class ErrorScreenCharactersState extends ScreenCharactersState {
+class ErrorScreenCharactersState extends ScreenEpisodesState {
   ErrorScreenCharactersState();
 
   @override
   List<Object> get props => [];
 }
 
-class LoadingScreenCharactersState extends ScreenCharactersState {
+class LoadingScreenCharactersState extends ScreenEpisodesState {
   LoadingScreenCharactersState();
 
   @override
   List<Object> get props => [];
 }
 
-class DataScreenCharactersState extends ScreenCharactersState {
+class DataScreenCharactersState extends ScreenEpisodesState {
   final bool isList;
   final List<Person> charactersList;
 

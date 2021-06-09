@@ -9,7 +9,7 @@ import 'package:rick_morty/theme/text_theme.dart';
 
 import 'package:flutter/material.dart';
 
-class Episodes extends StatelessWidget {
+class ScreenEpisodes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
