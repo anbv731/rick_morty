@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:rick_morty/data/person_model.dart';
 import 'package:rick_morty/screens/character/widgets/avatar.dart';
 import 'package:rick_morty/screens/character/widgets/description.dart';
-import 'package:rick_morty/screens/character/widgets/episods.dart';
+import 'package:rick_morty/screens/character/widgets/list_characters_episodes.dart';
 import 'package:rick_morty/theme/color_theme.dart';
 
 class Character extends StatelessWidget {
@@ -53,7 +53,7 @@ class Character extends StatelessWidget {
                 color: ThemeColors.text2,
               ),
             ),
-            ListEpisods(),
+            ListCharactersEpisodes(),
           ],
         ),
       ),

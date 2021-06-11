@@ -6,7 +6,8 @@ import 'package:rick_morty/screens/character/screen.dart';
 import 'package:rick_morty/theme/text_theme.dart';
 
 class ElementOfCharectersList extends StatelessWidget {
-  ElementOfCharectersList(this.isArrow,this.person);
+  ElementOfCharectersList(this.isArrow, this.person);
+
   bool isArrow;
   Person person;
 
@@ -16,10 +17,8 @@ class ElementOfCharectersList extends StatelessWidget {
       padding: const EdgeInsets.only(left: 16, bottom: 24, right: 16),
       child: GestureDetector(
         onTap: () {
-          Navigator.push(
-              context,
-              CupertinoPageRoute(
-                  builder: (context) => Character(person)));
+          Navigator.push(context,
+              CupertinoPageRoute(builder: (context) => Character(person)));
         },
         child: Row(
           children: [
@@ -44,14 +43,15 @@ class ElementOfCharectersList extends StatelessWidget {
                     person.name,
                     style: ThemeText.name,
                   ),
-                  Text(
-                      '${person.species} , ${person.gender}',
+                  Text('${person.species} , ${person.gender}',
                       style: ThemeText.fieldDescription),
                 ],
                 crossAxisAlignment: CrossAxisAlignment.start,
               ),
             ),
-            isArrow ? SvgPicture.asset('assets/svg_icons/vector.svg') : SizedBox()
+            isArrow
+                ? SvgPicture.asset('assets/svg_icons/vector.svg')
+                : SizedBox()
           ],
         ),
       ),

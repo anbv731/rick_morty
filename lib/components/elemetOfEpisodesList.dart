@@ -1,23 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rick_morty/data/episode_model.dart';
 import 'package:rick_morty/screens/episode/screen.dart';
 import 'package:rick_morty/theme/text_theme.dart';
 
 class ElementOfEpisodesList extends StatelessWidget {
-  ElementOfEpisodesList(this.arrow);
+  ElementOfEpisodesList(this.arrow, this.episode);
 
+  Episode episode;
   bool arrow;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 24,left: 16, right: 16),
+      padding: const EdgeInsets.only(top: 24, left: 16, right: 16),
       child: InkWell(
-        onTap: () {Navigator.push(
-            context,
-            CupertinoPageRoute(
-                builder: (context) => Episode()));},
+        onTap: () {
+          Navigator.push(context,
+              CupertinoPageRoute(builder: (context) => ScreenEpisode(episode)));
+        },
         child: Row(
           children: [
             Container(
@@ -35,12 +37,12 @@ class ElementOfEpisodesList extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('CЕРИЯ 1', style: ThemeText.episods),
+                  Text('Серия ${episode.id}', style: ThemeText.episods),
                   Text(
-                    'Пилот',
+                    episode.name,
                     style: ThemeText.name,
                   ),
-                  Text('1 декабря 2013', style: ThemeText.date),
+                  Text(episode.airDate, style: ThemeText.date),
                 ],
               ),
             ),

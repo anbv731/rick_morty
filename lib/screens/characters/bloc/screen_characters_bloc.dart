@@ -9,14 +9,14 @@ import 'dart:convert' as convert;
 
 
 class ScreenCharactersBloc
-    extends Bloc<ScreenEpisodesEvent, ScreenEpisodesState> {
-  ScreenCharactersBloc() : super(InitialScreenEpisodesState());
+    extends Bloc<ScreenCharactersEvent, ScreenCharactersState> {
+  ScreenCharactersBloc() : super(InitialScreenCharactersState());
   bool isList = true;
   List<Person> results = [];
 
   @override
-  Stream<ScreenEpisodesState> mapEventToState(
-    ScreenEpisodesEvent event,
+  Stream<ScreenCharactersState> mapEventToState(
+    ScreenCharactersEvent event,
   ) async* {
     if (event is InitialScreenCharactersEvent){
       yield* _mapInitialScreenCharactersEvent();
@@ -26,7 +26,7 @@ class ScreenCharactersBloc
     }
   }
 
-  Stream<ScreenEpisodesState> _mapInitialScreenCharactersEvent() async* {
+  Stream<ScreenCharactersState> _mapInitialScreenCharactersEvent() async* {
     yield LoadingScreenCharactersState();
 
     try {
@@ -67,7 +67,7 @@ class ScreenCharactersBloc
     );
   }
 
-  Stream<ScreenEpisodesState> _mapChangeViewScreenCharactersEvent(ChangeViewScreenCharactersEvent event) async* {
+  Stream<ScreenCharactersState> _mapChangeViewScreenCharactersEvent(ChangeViewScreenCharactersEvent event) async* {
     yield LoadingScreenCharactersState();
     isList = !event.isList;
     yield DataScreenCharactersState(

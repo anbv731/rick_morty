@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rick_morty/components/temporary_list_characters.dart';
+import 'package:rick_morty/data/episode_model.dart';
+import 'package:rick_morty/screens/location/screen.dart';
 import 'package:rick_morty/theme/color_theme.dart';
 import 'package:rick_morty/theme/text_theme.dart';
 
-class Episode extends StatelessWidget {
+class ScreenEpisode extends StatelessWidget {
+  ScreenEpisode(this.episode);
+
+  Episode episode = Episode();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,17 +69,33 @@ class Episode extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(top: 32),
                               child: Text(
-                                'Это планета, на которой проживает человеческая раса, и главное место для персонажей Рика и Морти. Возраст этой Земли более 4,6 миллиардов лет, и она является четвертой планетой от своей звезды.',
+                                'Зигерионцы помещают Джерри и Рика в симуляцию, чтобы узнать секрет изготовления концентрированной темной материи.',
                                 style: ThemeText.description,
                                 textAlign: TextAlign.left,
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(top: 36,bottom: 24 ),
+                              padding: EdgeInsets.only(top: 24, bottom: 4),
                               child: Text(
-                                'Персонажи',
-                                style: ThemeText.location,
+                                'Премьера',
+                                style: ThemeText.fieldDescription,
                               ),
+                            ),
+                            Text(episode.airDate,
+                                style: ThemeText.description1),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: 36,
+                                bottom: 36,
+                              ),
+                              child: Divider(
+                                thickness: 1,
+                                color: ThemeColors.text2,
+                              ),
+                            ),
+                            Text(
+                              'Персонажи',
+                              style: ThemeText.location,
                             ),
                           ],
                         ),
@@ -87,16 +110,21 @@ class Episode extends StatelessWidget {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(16)),
                           color: ThemeColors.background),
-                      child: Text(
-                        'М.Найт Шьямал-Инопланетянеcdcddccdccd!',
-                        textAlign: TextAlign.center,
-                        style: ThemeText.locatinName,
+                      child: Column(
+                        children: [
+                          Text(
+                            episode.name,
+                            textAlign: TextAlign.center,
+                            style: ThemeText.locationName,
+                          ),
+                          Text('Серия ${episode.id}', style: ThemeText.episods),
+                        ],
                       ),
                     ),
                   ),
                 ],
               ),
-              //LocationCharacters(),
+              TemporaryListCharacters()
             ],
           ),
         ));

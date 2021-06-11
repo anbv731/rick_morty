@@ -9,6 +9,5 @@ class ThemeColors{
   static const Color text4 = Color.fromRGBO(34, 162, 189, 0.87);
   static const Color textdescript = Color.fromRGBO(91, 105, 117, 1);
 
-
 }
 

@@ -10,7 +10,7 @@ class StartScreen1 extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Persons1()));
+            context, MaterialPageRoute(builder: (context) => ScreenCharacters()));
       },
       child: Scaffold(
         backgroundColor: ThemeColors.background,

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rick_morty/data/person_model.dart';
 import 'package:rick_morty/screens/location/screen.dart';
-import 'package:rick_morty/theme/color_theme.dart';
 import 'package:rick_morty/theme/text_theme.dart';
 
 class Description extends StatelessWidget {
@@ -18,8 +17,13 @@ class Description extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            person.name,textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 34, height:40/34,fontWeight: FontWeight.w400, color: Colors.white),
+            person.name,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+                fontSize: 34,
+                height: 40 / 34,
+                fontWeight: FontWeight.w400,
+                color: Colors.white),
           ),
           const SizedBox(
             height: 4,
@@ -41,16 +45,13 @@ class Description extends StatelessWidget {
               Expanded(
                 child: Align(
                   alignment: Alignment.centerLeft,
-                  child:  SizedBox(
+                  child: SizedBox(
                     height: 40,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Пол:',
-                            style: ThemeText.fieldDescription),
-                        Text('${person.gender}',
-                            style:
-                            ThemeText.description1),
+                        Text('Пол:', style: ThemeText.fieldDescription),
+                        Text('${person.gender}', style: ThemeText.description1),
                       ],
                     ),
                   ),
@@ -64,11 +65,9 @@ class Description extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Раса:',
-                            style: ThemeText.fieldDescription),
+                        Text('Раса:', style: ThemeText.fieldDescription),
                         Text('${person.species}',
-                            style:
-                            ThemeText.description1),
+                            style: ThemeText.description1),
                       ],
                     ),
                   ),
@@ -79,37 +78,39 @@ class Description extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 20),
             child: InkWell(
-              onTap: (){},
-              child: SizedBox(
-                height: 50,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Место рождения:',
-                              style: ThemeText.fieldDescription),
-                          Text('${person.origin.name}',
-                              style:
-                              ThemeText.description1),
-                        ],
+              onTap: () {},
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      CupertinoPageRoute(builder: (context) => Location()));
+                },
+                child: SizedBox(
+                  height: 50,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Место рождения:',
+                                style: ThemeText.fieldDescription),
+                            Text('${person.origin.name}',
+                                style: ThemeText.description1),
+                          ],
+                        ),
                       ),
-                    ),
-                    SvgPicture.asset('assets/svg_icons/vector.svg'),
-                  ],
+                      SvgPicture.asset('assets/svg_icons/vector.svg'),
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
           InkWell(
-            onTap: (){
-
-                Navigator.push(
-                    context,
-                    CupertinoPageRoute(
-                        builder: (context) => Location()));
-              },
+            onTap: () {
+              Navigator.push(context,
+                  CupertinoPageRoute(builder: (context) => Location()));
+            },
             child: SizedBox(
               height: 50,
               child: Row(

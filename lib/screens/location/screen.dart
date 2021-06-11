@@ -1,60 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rick_morty/data/person_model.dart';
-import 'package:rick_morty/screens/character/screen.dart';
+import 'package:rick_morty/components/temporary_list_characters.dart';
 import 'package:rick_morty/theme/color_theme.dart';
 import 'package:rick_morty/theme/text_theme.dart';
-
-class LocationCharacters extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(children: [
-      ...List.generate(
-        6,
-        (index) => Padding(
-          padding: const EdgeInsets.only(left: 16, bottom: 24, right: 16),
-          child: GestureDetector(
-            onTap: () {},
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 74,
-                  height: 74,
-                  child: ClipOval(
-                    child: Image.asset(
-                      'assets/images/morty.png',
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 18,
-                ),
-                Expanded(
-                  child: Column(
-                    children: [
-                      Text('ЖИВОЙ', style: ThemeText.green),
-                      Text(
-                        'Морти Смитт',
-                        style: ThemeText.name,
-                      ),
-                      Text('Человек , Мужской',
-                          style: ThemeText.fieldDescription),
-                    ],
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                  ),
-                ),
-                SvgPicture.asset('assets/svg_icons/vector.svg'),
-              ],
-
-            ),
-          ),
-        ),
-      ),
-    ]);
-  }
-}
 
 class Location extends StatelessWidget {
   @override
@@ -121,7 +70,7 @@ class Location extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(top: 36,bottom: 24 ),
+                              padding: EdgeInsets.only(top: 36, bottom: 24),
                               child: Text(
                                 'Персонажи',
                                 style: ThemeText.location,
@@ -142,13 +91,13 @@ class Location extends StatelessWidget {
                           color: ThemeColors.background),
                       child: Text(
                         'Земля С-137',
-                        style: ThemeText.locatinName,
+                        style: ThemeText.locationName,
                       ),
                     ),
                   ),
                 ],
               ),
-              LocationCharacters(),
+              TemporaryListCharacters(),
             ],
           ),
         ));

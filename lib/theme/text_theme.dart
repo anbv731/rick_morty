@@ -43,7 +43,7 @@ class ThemeText {
       fontWeight: FontWeight.w500,
       color: Colors.white,
       height: 28 / 20);
-  static const TextStyle locatinName = TextStyle(
+  static const TextStyle locationName = TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.w700,
       color: Colors.white,
@@ -53,4 +53,15 @@ class ThemeText {
       fontWeight: FontWeight.w500,
       color: Colors.white,
       height: 24 / 14);
+  static const TextStyle theme = TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+      color: Colors.white,
+      height: 24 / 16);
+  static const TextStyle about = TextStyle(
+      fontSize: 10,
+      fontWeight: FontWeight.w500,
+      color: ThemeColors.textdescript,
+      height: 1.6,
+      letterSpacing: 1.5);
 }
