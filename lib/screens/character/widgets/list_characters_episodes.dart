@@ -13,7 +13,7 @@ class ListCharactersEpisodes extends StatelessWidget {
   List<Episode> _list;
   @override
   Widget build(BuildContext context) {
-    _list= loadEpisode();
+    //_list= loadEpisode();
     return Column(
       children: [
         Padding(

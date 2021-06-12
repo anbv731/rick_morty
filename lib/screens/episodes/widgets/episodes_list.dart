@@ -13,7 +13,7 @@ class EpisodesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
         shrinkWrap: true,
-        itemCount: 6,
+        itemCount: episodes.length,
         itemBuilder: (_, index) {
           return ElementOfEpisodesList(false, episodes[index]);
         });
