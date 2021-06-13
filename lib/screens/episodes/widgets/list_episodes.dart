@@ -4,10 +4,10 @@ import 'package:rick_morty/components/elemetOfEpisodesList.dart';
 import 'package:rick_morty/data/episode_model.dart';
 
 
-class EpisodesList extends StatelessWidget {
+class ListEpisodes extends StatelessWidget {
   List<Episode> episodes;
 
-  EpisodesList(this.episodes);
+  ListEpisodes(this.episodes);
 
   @override
   Widget build(BuildContext context) {

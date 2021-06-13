@@ -1,6 +1,7 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
+import 'package:rick_morty/components/temporary_list_episodes.dart';
 import 'package:rick_morty/data/episode_model.dart';
 import 'package:rick_morty/screens/episodes/bloc/screen_episodes_event.dart';
 import 'dart:convert' as convert;
@@ -48,6 +49,7 @@ class ScreenEpisodesBloc
       yield ErrorScreenEpisodesState();
     }
 
+    TempLists.tempListEp = episodes;
     /// Возвращаем состояние с данными
     yield DataScreenEpisodesState(
       episodesList: episodes,

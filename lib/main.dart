@@ -17,7 +17,7 @@ import 'data/person_model.dart';
 void main() {
   List<Widget> screensList = [
     ScreenCharacters(),
-    Locations(),
+    ScreenLocations(),
     ScreenEpisodes(),
     ScreenSettings()
   ];

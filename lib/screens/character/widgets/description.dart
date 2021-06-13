@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rick_morty/data/person_model.dart';
 import 'package:rick_morty/screens/location/screen.dart';
+import 'package:rick_morty/screens/locations/screen.dart';
 import 'package:rick_morty/theme/text_theme.dart';
 
 class Description extends StatelessWidget {
@@ -82,7 +83,7 @@ class Description extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   Navigator.push(context,
-                      CupertinoPageRoute(builder: (context) => Location()));
+                      CupertinoPageRoute(builder: (context) => ScreenLocations()));
                 },
                 child: SizedBox(
                   height: 50,
@@ -109,7 +110,7 @@ class Description extends StatelessWidget {
           InkWell(
             onTap: () {
               Navigator.push(context,
-                  CupertinoPageRoute(builder: (context) => Location()));
+                  CupertinoPageRoute(builder: (context) => ScreenLocations()));
             },
             child: SizedBox(
               height: 50,

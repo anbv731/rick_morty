@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
+import 'package:rick_morty/components/temporary_list_episodes.dart';
 import 'package:rick_morty/data/person_model.dart';
 import 'package:rick_morty/screens/characters/bloc/screen_characters_event.dart';
 import 'package:rick_morty/screens/characters/bloc/screen_characters_state.dart';
@@ -59,6 +60,7 @@ class ScreenCharactersBloc
       print(ex);
       yield ErrorScreenCharactersState();
     }
+    TempLists.tempListPer = results;
 
     /// Возвращаем состояние с данными
     yield DataScreenCharactersState(

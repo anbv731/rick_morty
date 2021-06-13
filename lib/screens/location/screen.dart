@@ -2,10 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rick_morty/components/temporary_list_characters.dart';
+import 'package:rick_morty/components/temporary_list_episodes.dart';
+import 'package:rick_morty/data/location_model.dart';
+import 'package:rick_morty/data/person_model.dart';
+import 'package:rick_morty/screens/characters/widgets/persons_list.dart';
 import 'package:rick_morty/theme/color_theme.dart';
 import 'package:rick_morty/theme/text_theme.dart';
 
-class Location extends StatelessWidget {
+class ScreenLocation extends StatelessWidget {
+  ScreenLocation (this.location) ;
+  Location location = Location();
+  List<Person>  _list = TempLists.tempListPer;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +41,7 @@ class Location extends StatelessWidget {
         ),
         backgroundColor: ThemeColors.background,
         body: SingleChildScrollView(
+          physics:NeverScrollableScrollPhysics(),
           child: Column(
             children: [
               Stack(
@@ -56,8 +66,7 @@ class Location extends StatelessWidget {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(top: 22),
-                              child: Text(
-                                'Мир \u00B7 Измерение С-137',
+                              child: Text('Мир · ${location.dimension}',
                                 style: ThemeText.fieldDescription,
                               ),
                             ),
@@ -90,14 +99,14 @@ class Location extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(16)),
                           color: ThemeColors.background),
                       child: Text(
-                        'Земля С-137',
+                        location.name,
                         style: ThemeText.locationName,
                       ),
                     ),
                   ),
                 ],
               ),
-              TemporaryListCharacters(),
+              PersonsList(persons:_list),
             ],
           ),
         ));

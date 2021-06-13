@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rick_morty/components/loading_screen.dart';
 import 'package:rick_morty/screens/characters/widgets/persons_grid.dart';
 import 'package:rick_morty/screens/characters/widgets/persons_list.dart';
+import 'package:rick_morty/screens/splash_screen/screen.dart';
 import 'bloc/screen_characters_bloc.dart';
 import 'bloc/screen_characters_event.dart';
 import 'bloc/screen_characters_state.dart';
@@ -22,7 +23,7 @@ class ScreenCharacters extends StatelessWidget {
       child: BlocBuilder<ScreenCharactersBloc, ScreenCharactersState>(
         builder: (_, state) {
           if (state is LoadingScreenCharactersState) {
-            return LoadingScreen();
+            return StartScreen1();
           }
           if (state is DataScreenCharactersState) {
             return Scaffold(

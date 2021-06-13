@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:rick_morty/components/loading_screen.dart';
 import 'package:rick_morty/components/search.dart';
 import 'package:rick_morty/screens/episodes/bloc/screen_episodes_state.dart';
-import 'package:rick_morty/screens/episodes/widgets/episodes_list.dart';
+import 'package:rick_morty/screens/episodes/widgets/list_episodes.dart';
 import 'package:rick_morty/theme/color_theme.dart';
 import 'package:rick_morty/theme/text_theme.dart';
 
@@ -28,7 +28,10 @@ class ScreenEpisodes extends StatelessWidget {
             return LoadingScreen();
           }
           if (state is DataScreenEpisodesState) {
-            return DefaultTabController(
+            return
+
+
+              DefaultTabController(
               length: 5,
               child: Scaffold(
                 backgroundColor: ThemeColors.background,
@@ -55,15 +58,17 @@ class ScreenEpisodes extends StatelessWidget {
                 ),
                 body: TabBarView(
                   children: [
-                    EpisodesList(state.episodesList),
-                    EpisodesList(state.episodesList),
-                    EpisodesList(state.episodesList),
-                    EpisodesList(state.episodesList),
-                    EpisodesList(state.episodesList),
+                    ListEpisodes(state.episodesList),
+                    ListEpisodes(state.episodesList),
+                    ListEpisodes(state.episodesList),
+                    ListEpisodes(state.episodesList),
+                    ListEpisodes(state.episodesList),
                   ],
                 ),
               ),
             );
+
+
           }
           if (state is ErrorScreenEpisodesState) {
             return const Icon(Icons.close, size: 200);
