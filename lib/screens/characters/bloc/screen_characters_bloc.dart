@@ -30,9 +30,9 @@ class ScreenCharactersBloc
   Stream<ScreenCharactersState> _mapInitialScreenCharactersEvent() async* {
     yield LoadingScreenCharactersState();
 
-    try {
+    try { for (int i=1;i < 35;i++){
       http.Response response = await http.get(
-        Uri.parse('https://rickandmortyapi.com/api/character'),
+        Uri.parse('https://rickandmortyapi.com/api/character/?page=$i'),
       );
 
       if (response.statusCode == 200) {
@@ -53,7 +53,7 @@ class ScreenCharactersBloc
           person.location = result['location'] != null
               ? Origin.fromJson(result['location'])
               : null;
-          results.add(person);
+          results.add(person);}
         }
       }
     } catch (ex) {

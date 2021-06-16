@@ -54,7 +54,7 @@ class ScreenCharacters extends StatelessWidget {
               ),
               body: SafeArea(
                 child: state.isList
-                    ? PersonsList(persons: state.charactersList)
+                    ? PersonsList(persons: state.charactersList, isScrollable: true)
                     : PersonsGrid(
                         persons: state.charactersList,
                       ),

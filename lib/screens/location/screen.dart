@@ -41,7 +41,6 @@ class ScreenLocation extends StatelessWidget {
         ),
         backgroundColor: ThemeColors.background,
         body: SingleChildScrollView(
-          physics:NeverScrollableScrollPhysics(),
           child: Column(
             children: [
               Stack(
@@ -106,7 +105,7 @@ class ScreenLocation extends StatelessWidget {
                   ),
                 ],
               ),
-              PersonsList(persons:_list),
+              PersonsList(persons:_list,isScrollable: false),
             ],
           ),
         ));

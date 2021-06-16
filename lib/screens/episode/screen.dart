@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rick_morty/components/temporary_list_characters.dart';
+import 'package:rick_morty/components/temporary_list_episodes.dart';
 import 'package:rick_morty/data/episode_model.dart';
+import 'package:rick_morty/data/person_model.dart';
+import 'package:rick_morty/screens/characters/widgets/persons_list.dart';
 import 'package:rick_morty/screens/location/screen.dart';
 import 'package:rick_morty/theme/color_theme.dart';
 import 'package:rick_morty/theme/text_theme.dart';
 
 class ScreenEpisode extends StatelessWidget {
   ScreenEpisode(this.episode);
-
+  List<Person>  _list = TempLists.tempListPer;
   Episode episode = Episode();
 
   @override
@@ -93,9 +96,12 @@ class ScreenEpisode extends StatelessWidget {
                                 color: ThemeColors.text2,
                               ),
                             ),
-                            Text(
-                              'Персонажи',
-                              style: ThemeText.location,
+                            Padding(
+                              padding: const EdgeInsets.only(bottom:24),
+                              child: Text(
+                                'Персонажи',
+                                style: ThemeText.location,
+                              ),
                             ),
                           ],
                         ),
@@ -124,7 +130,7 @@ class ScreenEpisode extends StatelessWidget {
                   ),
                 ],
               ),
-              TemporaryListCharacters()
+              PersonsList(persons:_list,isScrollable: false)
             ],
           ),
         ));
