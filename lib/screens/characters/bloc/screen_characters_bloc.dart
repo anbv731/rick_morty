@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
+import 'package:rick_morty/components/service_api.dart';
 import 'package:rick_morty/components/temporary_list_episodes.dart';
 import 'package:rick_morty/data/person_model.dart';
 import 'package:rick_morty/screens/characters/bloc/screen_characters_event.dart';
@@ -30,32 +31,33 @@ class ScreenCharactersBloc
   Stream<ScreenCharactersState> _mapInitialScreenCharactersEvent() async* {
     yield LoadingScreenCharactersState();
 
-    try { for (int i=1;i < 35;i++){
-      http.Response response = await http.get(
-        Uri.parse('https://rickandmortyapi.com/api/character/?page=$i'),
-      );
-
-      if (response.statusCode == 200) {
-        List<dynamic> resultsList =
-            convert.jsonDecode(response.body)['results'];
-        for (var result in resultsList) {
-          Person person = Person();
-          person.id = result['id'];
-          person.name = result['name'];
-          person.status = result['status'];
-          person.url = result['url'];
-          person.image = result['image'];
-          person.species = result['species'];
-          person.gender = result['gender'];
-          person.origin = result['origin'] != null
-              ? Origin.fromJson(result['origin'])
-              : null;
-          person.location = result['location'] != null
-              ? Origin.fromJson(result['location'])
-              : null;
-          results.add(person);}
-        }
-      }
+    try {
+      results = await ServiceApi().getCharacters();
+    //   http.Response response = await http.get(
+    //     Uri.parse('https://rickandmortyapi.com/api/character/?page=$i'),
+    //   );
+    //
+    //   if (response.statusCode == 200) {
+    //     List<dynamic> resultsList =
+    //         convert.jsonDecode(response.body)['results'];
+    //     for (var result in resultsList) {
+    //       Person person = Person();
+    //       person.id = result['id'];
+    //       person.name = result['name'];
+    //       person.status = result['status'];
+    //       person.url = result['url'];
+    //       person.image = result['image'];
+    //       person.species = result['species'];
+    //       person.gender = result['gender'];
+    //       person.origin = result['origin'] != null
+    //           ? Origin.fromJson(result['origin'])
+    //           : null;
+    //       person.location = result['location'] != null
+    //           ? Origin.fromJson(result['location'])
+    //           : null;
+    //       results.add(person);}
+    //     }
+    //
     } catch (ex) {
       print(ex);
       yield ErrorScreenCharactersState();

@@ -8,7 +8,7 @@ import 'package:rick_morty/data/person_model.dart';
 class TempLists {
   static List<Episode> tempListEp ;
   static List<Person> tempListPer ;
-  static List<Location> tempListLoc ;
+  static  List<Location> tempListLoc ;
 
 
 

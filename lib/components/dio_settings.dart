@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 class DioSettings {
-  static final mainServer = "https://rickandmortyapi.com/documentation/";
+  static final mainServer = "https://rickandmortyapi.com/api";
   Dio dio = Dio(
     BaseOptions(
       baseUrl: mainServer,
@@ -22,9 +22,9 @@ class DioSettings {
             throw DioError(
               error: "Отсутствуют данные",
               response: Response(
-                statusCode: 400,
+                statusCode: 204,
                 requestOptions: response.requestOptions,
-              ),
+              ), requestOptions: response.requestOptions,
             );
           }
         },
@@ -35,7 +35,7 @@ class DioSettings {
           response: Response(
             statusCode: 400,
             requestOptions: error.requestOptions,
-          ),
+          ),requestOptions: error.requestOptions,
         );
       }
       else if (error.message.contains("SocketException:")) {
@@ -44,7 +44,7 @@ class DioSettings {
           response: Response(
             statusCode: 400,
             requestOptions: error.requestOptions,
-          ),
+          ),requestOptions: error.requestOptions,
         );
       }
       else if (error.response.statusCode == 401) {
