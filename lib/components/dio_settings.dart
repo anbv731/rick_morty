@@ -1,7 +1,12 @@
 import 'package:dio/dio.dart';
 
 class DioSettings {
-  static final mainServer = "https://rickandmortyapi.com/api";
+  static final mainServer = "https://rickandmortyapi.com/api/";
+
+  // DioSettings() {
+  //   initialSettings();
+  // }
+
   Dio dio = Dio(
     BaseOptions(
       baseUrl: mainServer,
@@ -24,51 +29,48 @@ class DioSettings {
               response: Response(
                 statusCode: 204,
                 requestOptions: response.requestOptions,
-              ), requestOptions: response.requestOptions,
+              ),
+              requestOptions: response.requestOptions,
             );
           }
         },
-    onError: (DioError error,handler) async {
-      if (error.type == DioErrorType.connectTimeout) {
-        throw DioError(
-          error: "Сервер не отвечает попробуйте еще раз",
-          response: Response(
-            statusCode: 400,
-            requestOptions: error.requestOptions,
-          ),requestOptions: error.requestOptions,
-        );
-      }
-      else if (error.message.contains("SocketException:")) {
-        throw DioError(
-          error: "Отсутствует интернет соединение",
-          response: Response(
-            statusCode: 400,
-            requestOptions: error.requestOptions,
-          ),requestOptions: error.requestOptions,
-        );
-      }
-      else if (error.response.statusCode == 401) {
-        // ErrorHandler().showError(
-        //   DioError(error: /*ErrorHandlerType.auth*/),
-        // ); отображение ошибок
-      }
-      return error;
-
-    }
-
-
+        onError: (DioError error, handler) {
+          if (error.type == DioErrorType.connectTimeout) {
+            throw DioError(
+              error: "Сервер не отвечает попробуйте еще раз",
+              response: Response(
+                statusCode: 400,
+                requestOptions: error.requestOptions,
+              ),
+              requestOptions: error.requestOptions,
+            );
+          } else if (error.message.contains("SocketException:")) {
+            throw DioError(
+              error: "Отсутствует интернет соединение",
+              response: Response(
+                statusCode: 400,
+                requestOptions: error.requestOptions,
+              ),
+              requestOptions: error.requestOptions,
+            );
+          } else if (error.response.statusCode == 401) {
+            // ErrorHandler().showError(
+            //   DioError(error: /*ErrorHandlerType.auth*/),
+            // ); отображение ошибок
+          }
+          return error;
+        },
       ),
     );
-    interceptors.add(LogInterceptor(
-      request: true,
-      requestBody: true,
-      requestHeader: true,
-      responseBody: true,
-      responseHeader: true,
-    ));
-  }
-
-  DioSettings() {
-    initialSettings();
+    interceptors.add(
+      LogInterceptor(
+        request: true,
+        requestBody: true,
+        requestHeader: true,
+        responseBody: true,
+        responseHeader: true,
+      ),
+    );
+    interceptors.requestLock.unlock();
   }
 }

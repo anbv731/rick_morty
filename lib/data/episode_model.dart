@@ -1,6 +1,3 @@
-import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
-import 'dart:convert' as convert;
 class Episode {
   int id;
   String name;
@@ -10,14 +7,23 @@ class Episode {
   String url;
   String created;
 
-  Episode(
-      {this.id,
-      this.name,
-      this.airDate,
-      this.episode,
-      this.characters,
-      this.url,
-      this.created});
+  Episode({this.id,
+    this.name,
+    this.airDate,
+    this.episode,
+    this.characters,
+    this.url,
+    this.created});
+
+  Episode.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    airDate = json['air_date'];
+    episode = json['episode'];
+    characters = json['characters'].cast<String>();
+    url = json['url'];
+    created = json['created'];
+  }
 }
 // Future<List<Episode>> loadEpisode () async {
 //   Response response = await http.get(
@@ -51,4 +57,3 @@ class Episode {
       // ];
       // return episodes;
 
-//}

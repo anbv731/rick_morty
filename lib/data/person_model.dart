@@ -13,7 +13,21 @@ class Person {
   String gender;
   Origin origin;
   Origin location;
+
+  Person.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    status = json['status'];
+    species = json['species'];
+    gender = json['gender'];
+    origin = json['origin'] != null ? Origin.fromJson(json['origin']) : null;
+    location =
+        json['location'] != null ? Origin.fromJson(json['location']) : null;
+    image = json['image'];
+    url = json['url'];
+  }
 }
+
 class Origin {
   String name;
   String url;
@@ -25,7 +39,6 @@ class Origin {
     url = json['url'];
   }
 }
-
 
 // Future<List<Person>> loadPerson() async {
 //   Response response = await http.get(

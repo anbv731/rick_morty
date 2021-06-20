@@ -9,7 +9,7 @@ import 'package:rick_morty/theme/text_theme.dart';
 class Description extends StatelessWidget {
   Description(this.person);
 
-  Person person = Person();
+  Person person;
 
   @override
   Widget build(BuildContext context) {

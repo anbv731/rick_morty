@@ -8,7 +8,7 @@ import 'package:rick_morty/theme/color_theme.dart';
 class Avatar extends StatelessWidget {
   Avatar(this.person);
 
-  Person person = Person();
+  Person person;
 
   @override
   Widget build(BuildContext context) {
