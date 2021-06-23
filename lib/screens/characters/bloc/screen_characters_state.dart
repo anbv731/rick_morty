@@ -1,3 +1,4 @@
+
 import 'package:equatable/equatable.dart';
 import 'package:rick_morty/data/person_model.dart';
 

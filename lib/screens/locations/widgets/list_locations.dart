@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:rick_morty/components/element_of_list_locations.dart';
 import 'package:rick_morty/data/location_model.dart';
-import 'file:///C:/Users/tatiana/StudioProjects/rick_morty/lib/components/element_of_list_locations.dart';
+
 
 class ListLocations extends StatelessWidget{
   List <Location> locations;

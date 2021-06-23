@@ -7,6 +7,7 @@ import 'package:rick_morty/data/person_model.dart';
 class ServiceApi {
   DioSettings _dioSettings;
   Dio _dio;
+  List<String> loadingCharactersList;
 
   Map<String, dynamic> _request;
   static ServiceApi _instance = ServiceApi.internal();
@@ -42,5 +43,13 @@ class ServiceApi {
 
         return List<Location>.from(results);
       }
+  Future<List<Person>> getCharactersOnly() async {
+
+    final response = await _dio.get('character');
+    final results = (response.data)['results']
+        .map((element) => Person.fromJson(element))
+        .toList();
+
+    return List<Person>.from(results);
   }
 

@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_morty/data/location_model.dart';
 import 'package:rick_morty/screens/locations/bloc/screen_locations_bloc.dart';
 import 'package:rick_morty/screens/locations/bloc/screen_locations_event.dart';
-import 'file:///C:/Users/tatiana/StudioProjects/rick_morty/lib/components/element_of_list_locations.dart';
+
 import 'package:rick_morty/screens/locations/widgets/list_locations.dart';
 import '../../theme/color_theme.dart';
 import 'package:rick_morty/screens/locations/bloc/screen_locations_state.dart';
