@@ -48,14 +48,14 @@ class ServiceApi {
     return List<Location>.from(results);
   }
 
-  Future<List<Person>> getCharactersOnly() async {
-    for (int i = 0; i <= loadingCharactersList.length; i++){
-    final response = await _dio.get('$loadingCharactersList[i]');
-    final results = (response.data)['results']
+  Future<List<Person>> getCharactersOnly(List<String> loadingCharactersList) async {
+    print(loadingCharactersList);
+    final response = await _dio.get('character/1,2');
+    final results = response.data
         .map((element) => Person.fromJson(element))
         .toList();
 
-    return List<Person>.from(results);}
+    return List<Person>.from(results);
   }
 }
 

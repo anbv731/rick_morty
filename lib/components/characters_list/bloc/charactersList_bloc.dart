@@ -32,8 +32,8 @@ class CharactersListBloc
     yield LoadingCharactersListState();
 
     try {
-      ServiceApi.loadOnly(loadingCharactersList);
-      charactersList = await ServiceApi().getCharactersOnly();
+      //ServiceApi.loadOnly(loadingCharactersList);
+      charactersList = await ServiceApi().getCharactersOnly(loadingCharactersList);
     } catch (ex) {
       print(ex);
       yield ErrorCharactersListState();
