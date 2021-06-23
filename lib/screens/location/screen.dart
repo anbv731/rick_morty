@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rick_morty/components/characters_list/characters_list.dart';
 import 'package:rick_morty/components/temporary_list_characters.dart';
 import 'package:rick_morty/components/temporary_list_episodes.dart';
 import 'package:rick_morty/data/location_model.dart';
@@ -12,11 +13,12 @@ import 'package:rick_morty/theme/text_theme.dart';
 class ScreenLocation extends StatelessWidget {
   ScreenLocation (this.location) ;
   Location location = Location();
-  List<Person>  _list = TempLists.tempListPer;
+  List<String> loadingCharactersList = [];
 
 
   @override
   Widget build(BuildContext context) {
+    List<String> loadingCharactersList = location.residents;
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: PreferredSize(
@@ -105,7 +107,7 @@ class ScreenLocation extends StatelessWidget {
                   ),
                 ],
               ),
-              PersonsList(persons:_list,isScrollable: false),
+              CharactersList(loadingCharactersList:loadingCharactersList,isScrollable: false),
             ],
           ),
         ));

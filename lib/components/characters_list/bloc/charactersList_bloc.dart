@@ -14,9 +14,10 @@ import 'dart:convert' as convert;
 
 class CharactersListBloc
     extends Bloc<CharactersListEvent, CharactersListState> {
-  CharactersListBloc() : super(InitialCharactersListState());
+  CharactersListBloc(this.loadingCharactersList) : super(InitialCharactersListState());
   bool isList = true;
-  List<Person> results = [];
+  List<Person> charactersList = [];
+  List<String> loadingCharactersList=[];
 
   @override
   Stream<CharactersListState> mapEventToState(
@@ -31,16 +32,16 @@ class CharactersListBloc
     yield LoadingCharactersListState();
 
     try {
-      results = await ServiceApi().getCharacters();
+      ServiceApi.loadOnly(loadingCharactersList);
+      charactersList = await ServiceApi().getCharactersOnly();
     } catch (ex) {
       print(ex);
       yield ErrorCharactersListState();
     }
-    TempLists.tempListPer = results;
 
     /// Возвращаем состояние с данными
     yield DataCharactersListState(
-      charactersList: results,
+      charactersList: charactersList,
     );
   }
 }
