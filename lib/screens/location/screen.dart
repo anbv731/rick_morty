@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rick_morty/components/characters_list/characters_list.dart';
+import 'package:rick_morty/components/dio_settings.dart';
+import 'package:rick_morty/components/service_api.dart';
 import 'package:rick_morty/components/temporary_list_characters.dart';
 import 'package:rick_morty/components/temporary_list_episodes.dart';
 import 'package:rick_morty/data/location_model.dart';
@@ -11,14 +13,19 @@ import 'package:rick_morty/theme/color_theme.dart';
 import 'package:rick_morty/theme/text_theme.dart';
 
 class ScreenLocation extends StatelessWidget {
-  ScreenLocation (this.location) ;
-  Location location = Location();
-  List<String> loadingCharactersList = [];
+  ScreenLocation(this.location);
 
+  Location location = Location();
+  String loadingCharactersList ;
 
   @override
   Widget build(BuildContext context) {
-    List<String> loadingCharactersList = location.residents;
+    location.residents = location.residents
+        .map((elementOfList) => elementOfList.replaceAll(
+            'https://rickandmortyapi.com/api/character/', ''))
+        .toList();
+    String loadingCharactersList = location.residents.join(",");
+print(loadingCharactersList);
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: PreferredSize(
@@ -67,7 +74,8 @@ class ScreenLocation extends StatelessWidget {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(top: 22),
-                              child: Text('Мир · ${location.dimension}',
+                              child: Text(
+                                'Мир · ${location.dimension}',
                                 style: ThemeText.fieldDescription,
                               ),
                             ),
@@ -107,7 +115,9 @@ class ScreenLocation extends StatelessWidget {
                   ),
                 ],
               ),
-              CharactersList(loadingCharactersList:loadingCharactersList,isScrollable: false),
+              CharactersList(
+                  loadingCharactersList: loadingCharactersList,
+                  isScrollable: false),
             ],
           ),
         ));

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rick_morty/components/characters_list/characters_list.dart';
 import 'package:rick_morty/components/temporary_list_characters.dart';
 import 'package:rick_morty/components/temporary_list_episodes.dart';
 import 'package:rick_morty/data/episode_model.dart';
@@ -13,9 +14,15 @@ class ScreenEpisode extends StatelessWidget {
   ScreenEpisode(this.episode);
   List<Person>  _list = TempLists.tempListPer;
   Episode episode = Episode();
+  String loadingCharactersList ;
 
   @override
   Widget build(BuildContext context) {
+    episode.characters = episode.characters
+        .map((elementOfList) => elementOfList.replaceAll(
+        'https://rickandmortyapi.com/api/character/', ''))
+        .toList();
+    String loadingCharactersList = episode.characters.join(",");
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: PreferredSize(
@@ -130,7 +137,9 @@ class ScreenEpisode extends StatelessWidget {
                   ),
                 ],
               ),
-              PersonsList(persons:_list,isScrollable: false)
+              CharactersList(
+                  loadingCharactersList: loadingCharactersList,
+                  isScrollable: false),
             ],
           ),
         ));

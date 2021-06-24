@@ -13,7 +13,7 @@ class CharactersList extends StatelessWidget {
 
 
   bool isScrollable;
-  List<String> loadingCharactersList;
+  String loadingCharactersList;
 
   @override
   Widget build(BuildContext context) {

@@ -53,7 +53,7 @@ class Character extends StatelessWidget {
                 color: ThemeColors.text2,
               ),
             ),
-            ListCharactersEpisodes(),
+            ListCharactersEpisodes(person.e),
           ],
         ),
       ),

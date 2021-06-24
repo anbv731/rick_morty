@@ -17,7 +17,7 @@ class CharactersListBloc
   CharactersListBloc(this.loadingCharactersList) : super(InitialCharactersListState());
   bool isList = true;
   List<Person> charactersList = [];
-  List<String> loadingCharactersList=[];
+  String loadingCharactersList;
 
   @override
   Stream<CharactersListState> mapEventToState(

@@ -8,8 +8,6 @@ import 'package:rick_morty/screens/location/screen.dart';
 class ServiceApi {
   DioSettings _dioSettings;
   Dio _dio;
-  List<String> loadingCharactersList;
-  ServiceApi.loadOnly(this.loadingCharactersList);
 
   Map<String, dynamic> _request;
   static ServiceApi _instance = ServiceApi.internal();
@@ -48,14 +46,21 @@ class ServiceApi {
     return List<Location>.from(results);
   }
 
-  Future<List<Person>> getCharactersOnly(List<String> loadingCharactersList) async {
-    print(loadingCharactersList);
-    final response = await _dio.get('character/1,2');
+  Future<List<Person>> getCharactersOnly(String loadingCharactersList) async {
+    final response = await _dio.get('character/$loadingCharactersList');
     final results = response.data
         .map((element) => Person.fromJson(element))
         .toList();
 
     return List<Person>.from(results);
+  }
+  Future<List<Episode>> getEpisodesOnly(String loadingEpisodesList) async {
+    final response = await _dio.get('episode/$loadingEpisodesList');
+    final results = (response.data)['results']
+        .map((element) => Episode.fromJson(element))
+        .toList();
+
+    return List<Episode>.from(results);
   }
 }
 
