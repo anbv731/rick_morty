@@ -10,11 +10,8 @@ import 'package:rick_morty/screens/episodes/bloc/screen_episodes_state.dart';
 
 class ScreenEpisodesBloc
     extends Bloc<ScreenEpisodesEvent, ScreenEpisodesState> {
-  ScreenEpisodesBloc({isLoadOnly,loadingEpisodesList}) : super(InitialScreenEpisodesState());
+  ScreenEpisodesBloc() : super(InitialScreenEpisodesState());
   List<Episode> episodes = [];
-  bool isLoadOnly = false;
-  String loadingEpisodesList;
-
 
   @override
   Stream<ScreenEpisodesState> mapEventToState(
@@ -29,7 +26,7 @@ class ScreenEpisodesBloc
     yield LoadingScreenEpisodesState();
     List<Episode> episodes = [];
     try {
-      episodes=  isLoadOnly? await ServiceApi().getEpisodesOnly(loadingEpisodesList):await ServiceApi().getEpisodes();
+      episodes= await ServiceApi().getEpisodes();
     }
     catch (ex) {
       print(ex);

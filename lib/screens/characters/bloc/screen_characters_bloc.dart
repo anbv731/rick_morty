@@ -37,7 +37,7 @@ class ScreenCharactersBloc
       print(ex);
       yield ErrorScreenCharactersState();
     }
-    TempLists.tempListPer = results;
+    //TempLists.tempListPer = results;
 
     /// Возвращаем состояние с данными
     yield DataScreenCharactersState(

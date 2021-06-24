@@ -24,6 +24,7 @@ class ServiceApi {
     final results = (response.data)['results']
         .map((element) => Person.fromJson(element))
         .toList();
+    print(results);
 
     return List<Person>.from(results);
   }
@@ -55,7 +56,9 @@ class ServiceApi {
     return List<Person>.from(results);
   }
   Future<List<Episode>> getEpisodesOnly(String loadingEpisodesList) async {
-    final response = await _dio.get('episode/$loadingEpisodesList');
+    print(loadingEpisodesList);
+    final response = await _dio.get('episode/1,2,3');
+
     final results = (response.data)['results']
         .map((element) => Episode.fromJson(element))
         .toList();

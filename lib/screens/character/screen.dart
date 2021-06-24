@@ -15,6 +15,14 @@ class Character extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(person.episode);
+    person.episode = person.episode
+        .map((elementOfList) => elementOfList.replaceAll(
+            'https://rickandmortyapi.com/api/episode/', ''))
+        .toList();
+    print(person.episode);
+    String loadingEpisodesList = person.episode.join(",");
+    print('список $loadingEpisodesList');
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
@@ -53,7 +61,7 @@ class Character extends StatelessWidget {
                 color: ThemeColors.text2,
               ),
             ),
-            ListCharactersEpisodes(person.e),
+            ListCharactersEpisodes(loadingEpisodesList),
           ],
         ),
       ),

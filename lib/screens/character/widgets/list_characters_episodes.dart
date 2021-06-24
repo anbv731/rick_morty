@@ -1,18 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:rick_morty/components/elemetOfEpisodesList.dart';
+import 'package:rick_morty/components/episodes_list/bloc/screen_character_episodes_bloc.dart';
+import 'package:rick_morty/components/episodes_list/bloc/screen_character_episodes_event.dart';
+import 'package:rick_morty/components/episodes_list/bloc/screen_character_episodes_state.dart';
 import 'package:rick_morty/components/loading_screen.dart';
-import 'package:rick_morty/components/temporary_list_episodes.dart';
-import 'package:rick_morty/data/episode_model.dart';
-import 'package:rick_morty/screens/episodes/bloc/screen_episodes_bloc.dart';
-import 'package:rick_morty/screens/episodes/bloc/screen_episodes_event.dart';
 import 'package:rick_morty/screens/episodes/bloc/screen_episodes_state.dart';
 import 'package:rick_morty/screens/episodes/screen.dart';
-import 'package:rick_morty/screens/splash_screen/screen.dart';
-import 'package:rick_morty/theme/color_theme.dart';
 import 'package:rick_morty/theme/text_theme.dart';
 
 class ListCharactersEpisodes extends StatelessWidget {
@@ -21,15 +16,15 @@ String loadingEpisodesList;
 
   @override
   Widget build(BuildContext context) {
-    final bloc = ScreenEpisodesBloc(isLoadOnly: true,loadingEpisodesList:loadingEpisodesList );
-    return BlocProvider<ScreenEpisodesBloc>(
-      create: (BuildContext context) => bloc..add(LoadingScreenEpisodesEvent()),
-      child: BlocBuilder<ScreenEpisodesBloc, ScreenEpisodesState>(
+    final bloc = ScreenCharacterEpisodesBloc(loadingEpisodesList:loadingEpisodesList );
+    return BlocProvider<ScreenCharacterEpisodesBloc>(
+      create: (BuildContext context) => bloc..add(LoadingScreenCharacterEpisodesEvent()),
+      child: BlocBuilder<ScreenCharacterEpisodesBloc, ScreenCharacterEpisodesState>(
         builder: (_, state) {
-          if (state is LoadingScreenEpisodesState) {
+          if (state is LoadingScreenCharacterEpisodesState) {
             return LoadingScreen();
           }
-          if (state is DataScreenEpisodesState) {
+          if (state is DataScreenCharacterEpisodesState) {
             return Column(
               children: [
                 Padding(
