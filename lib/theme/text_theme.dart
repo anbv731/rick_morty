@@ -8,6 +8,11 @@ class ThemeText {
       fontWeight: FontWeight.w500,
       color: ThemeColors.text3,
       height: 1.6);
+  static const TextStyle red = TextStyle(
+      fontSize: 10,
+      fontWeight: FontWeight.w500,
+      color: ThemeColors.text5,
+      height: 1.6);
   static const TextStyle episods = TextStyle(
       fontSize: 10,
       fontWeight: FontWeight.w500,

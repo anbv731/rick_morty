@@ -7,6 +7,7 @@ class ThemeColors{
   static const Color search1 = Color.fromRGBO(21, 42, 58, 1);
   static const Color text3 = Color.fromRGBO(67, 208, 73, 1);
   static const Color text4 = Color.fromRGBO(34, 162, 189, 0.87);
+  static const Color text5 = Color.fromRGBO(235, 87, 87, 1);
   static const Color textdescript = Color.fromRGBO(91, 105, 117, 1);
 
 }

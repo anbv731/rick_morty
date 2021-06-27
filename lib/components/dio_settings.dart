@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 class DioSettings {
-  static final mainServer = "https://rickandmortyapi.com/api/";
+  static final mainServer = "http://173.249.20.184:7001/api/";
 
   // DioSettings() {
   //   initialSettings();

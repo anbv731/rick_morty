@@ -42,7 +42,7 @@ class ElementOfEpisodesList extends StatelessWidget {
                     episode.name,
                     style: ThemeText.name,
                   ),
-                  Text(episode.airDate, style: ThemeText.date),
+                  Text(episode.premiere.timeZoneName, style: ThemeText.date),
                 ],
               ),
             ),

@@ -27,8 +27,8 @@ class ElementOfCharectersList extends StatelessWidget {
               height: 74,
               child: ClipOval(
                 child: Image.network(
-                  person.image,
-                  fit: BoxFit.contain,
+                  person.imageName,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -38,12 +38,14 @@ class ElementOfCharectersList extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Text(person.status, style: ThemeText.green),
-                  Text(
-                    person.name,
+                  if (person.status == 0)
+                    (Text('ЖИВОЙ', style: ThemeText.green))
+                  else
+                    (Text('МЕРТВЫЙ', style: ThemeText.red)),
+                  Text(person.fullName,
                     style: ThemeText.name,
                   ),
-                  Text('${person.species} , ${person.gender}',
+                  Text('${person.race} , ${person.gender}',
                       style: ThemeText.fieldDescription),
                 ],
                 crossAxisAlignment: CrossAxisAlignment.start,

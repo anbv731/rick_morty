@@ -18,7 +18,7 @@ class Description extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            person.name,
+            person.fullName,
             textAlign: TextAlign.center,
             style: const TextStyle(
                 fontSize: 34,
@@ -29,12 +29,13 @@ class Description extends StatelessWidget {
           const SizedBox(
             height: 4,
           ),
-          Text(person.status, style: ThemeText.green),
+          if (person.status==0)(Text('ЖИВОЙ', style: ThemeText.green))
+            else  (Text('МЕРТВЫЙ', style: ThemeText.red)),
           const SizedBox(
             height: 36,
           ),
           Text(
-            'Главный протагонист мультсериала "Рик  и Морти". Безумный ученый,чей алкоголизм, безрассудство и социопатия заставляют беспокоится семью его дочери.',
+            '${person.about}',
             textAlign: TextAlign.left,
             style: ThemeText.description,
           ),
@@ -67,7 +68,7 @@ class Description extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Раса:', style: ThemeText.fieldDescription),
-                        Text('${person.species}',
+                        Text('${person.race}',
                             style: ThemeText.description1),
                       ],
                     ),
@@ -95,7 +96,7 @@ class Description extends StatelessWidget {
                           children: [
                             Text('Место рождения:',
                                 style: ThemeText.fieldDescription),
-                            Text('${person.origin.name}',
+                            Text('${person.placeOfBirthId}',
                                 style: ThemeText.description1),
                           ],
                         ),
@@ -122,7 +123,7 @@ class Description extends StatelessWidget {
                       children: [
                         Text('Местоположение:',
                             style: ThemeText.fieldDescription),
-                        Text('${person.location.name}',
+                        Text('${person.placeOfBirth}',
                             style: ThemeText.description1),
                       ],
                     ),

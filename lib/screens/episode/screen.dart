@@ -91,7 +91,7 @@ class ScreenEpisode extends StatelessWidget {
                                 style: ThemeText.fieldDescription,
                               ),
                             ),
-                            Text(episode.airDate,
+                            Text(episode.premiere.day.toString(),
                                 style: ThemeText.description1),
                             Padding(
                               padding: EdgeInsets.only(

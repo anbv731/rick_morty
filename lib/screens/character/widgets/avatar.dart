@@ -22,7 +22,7 @@ class Avatar extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 4,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(person.image),
+                  image: NetworkImage(person.imageName),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -43,10 +43,10 @@ class Avatar extends StatelessWidget {
                 backgroundColor: ThemeColors.background,
                 child: ClipOval(
                   child: Image.network(
-                    person.image,
+                    person.imageName,
                     width: 146,
                     height: 146,
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                   ),
                 )),
           ),

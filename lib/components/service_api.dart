@@ -20,8 +20,8 @@ class ServiceApi {
   }
 
   Future<List<Person>> getCharacters() async {
-    final response = await _dio.get('character');
-    final results = (response.data)['results']
+    final response = await _dio.get('Characters/GetAll?PageNumber=1&PageSize=50');
+    final results = (response.data)['data']
         .map((element) => Person.fromJson(element))
         .toList();
     print(results);
