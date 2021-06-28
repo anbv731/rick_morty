@@ -22,27 +22,27 @@ class ElementOfEpisodesList extends StatelessWidget {
         },
         child: Row(
           children: [
-            Container(
-              margin: EdgeInsets.only(right: 16),
-              height: 74,
-              width: 74,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(5),
-                ),
-              ),
-              child: Image.asset('assets/images/episod1.png'),
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
+                  child: Image.network(
+                    episode.imageName,
+                    height: 74,
+                    width: 74,
+                    fit: BoxFit.cover,
+                  )),
             ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Серия ${episode.id}', style: ThemeText.episods),
+                  Text('Серия ${episode.series}', style: ThemeText.episods),
                   Text(
                     episode.name,
                     style: ThemeText.name,
                   ),
-                  Text(episode.premiere.timeZoneName, style: ThemeText.date),
+                  Text('${episode.premiere.day} ${episode.premiere.month} ${episode.premiere.year}', style: ThemeText.date),
                 ],
               ),
             ),

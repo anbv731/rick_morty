@@ -11,12 +11,11 @@ import 'package:rick_morty/screens/episodes/screen.dart';
 import 'package:rick_morty/theme/text_theme.dart';
 
 class ListCharactersEpisodes extends StatelessWidget {
-  ListCharactersEpisodes(this.loadingEpisodesList);
-String loadingEpisodesList;
+  ListCharactersEpisodes();
 
   @override
   Widget build(BuildContext context) {
-    final bloc = ScreenCharacterEpisodesBloc(loadingEpisodesList:loadingEpisodesList );
+    final bloc = ScreenCharacterEpisodesBloc();
     return BlocProvider<ScreenCharacterEpisodesBloc>(
       create: (BuildContext context) => bloc..add(LoadingScreenCharacterEpisodesEvent()),
       child: BlocBuilder<ScreenCharacterEpisodesBloc, ScreenCharacterEpisodesState>(

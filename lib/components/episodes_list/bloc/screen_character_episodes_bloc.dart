@@ -14,8 +14,7 @@ class ScreenCharacterEpisodesBloc
     extends Bloc<ScreenCharacterEpisodesEvent, ScreenCharacterEpisodesState> {
 
   List<Episode> episodes = [];
-  String loadingEpisodesList;
-  ScreenCharacterEpisodesBloc({loadingEpisodesList}) : super(InitialScreenCharacterEpisodesState());
+  ScreenCharacterEpisodesBloc() : super(InitialScreenCharacterEpisodesState());
 
   @override
   Stream<ScreenCharacterEpisodesState> mapEventToState(
@@ -30,7 +29,7 @@ class ScreenCharacterEpisodesBloc
     yield LoadingScreenCharacterEpisodesState();
     List<Episode> episodes = [];
     try {
-      episodes= await ServiceApi().getEpisodesOnly(loadingEpisodesList);
+      episodes= await ServiceApi().getEpisodes();
     }
     catch (ex) {
       print(ex);

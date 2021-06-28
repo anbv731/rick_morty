@@ -30,8 +30,8 @@ class ServiceApi {
   }
 
   Future<List<Episode>> getEpisodes() async {
-    final response = await _dio.get('episode');
-    final results = (response.data)['results']
+    final response = await _dio.get('Episodes/GetAll?PageNumber=1&PageSize=50');
+    final results = (response.data)['data']
         .map((element) => Episode.fromJson(element))
         .toList();
 
@@ -55,15 +55,6 @@ class ServiceApi {
 
     return List<Person>.from(results);
   }
-  Future<List<Episode>> getEpisodesOnly(String loadingEpisodesList) async {
-    print(loadingEpisodesList);
-    final response = await _dio.get('episode/1,2,3');
 
-    final results = (response.data)['results']
-        .map((element) => Episode.fromJson(element))
-        .toList();
-
-    return List<Episode>.from(results);
-  }
 }
 

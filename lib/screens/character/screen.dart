@@ -10,19 +10,10 @@ import 'package:rick_morty/theme/color_theme.dart';
 
 class Character extends StatelessWidget {
   Character(this.person);
-
   Person person;
 
   @override
   Widget build(BuildContext context) {
-    print(person.episode);
-    person.episode = person.episode
-        .map((elementOfList) => elementOfList.replaceAll(
-            'https://rickandmortyapi.com/api/episode/', ''))
-        .toList();
-    print(person.episode);
-    String loadingEpisodesList = person.episode.join(",");
-    print('список $loadingEpisodesList');
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
@@ -61,7 +52,7 @@ class Character extends StatelessWidget {
                 color: ThemeColors.text2,
               ),
             ),
-            ListCharactersEpisodes(loadingEpisodesList),
+            ListCharactersEpisodes(),
           ],
         ),
       ),
