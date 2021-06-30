@@ -96,7 +96,7 @@ class Description extends StatelessWidget {
                           children: [
                             Text('Место рождения:',
                                 style: ThemeText.fieldDescription),
-                            Text('${person.placeOfBirthId}',
+                            Text('${person.placeOfBirth}',
                                 style: ThemeText.description1),
                           ],
                         ),
@@ -105,31 +105,6 @@ class Description extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              Navigator.push(context,
-                  CupertinoPageRoute(builder: (context) => ScreenLocations()));
-            },
-            child: SizedBox(
-              height: 50,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Местоположение:',
-                            style: ThemeText.fieldDescription),
-                        Text('${person.placeOfBirth}',
-                            style: ThemeText.description1),
-                      ],
-                    ),
-                  ),
-                  SvgPicture.asset('assets/svg_icons/vector.svg'),
-                ],
               ),
             ),
           ),

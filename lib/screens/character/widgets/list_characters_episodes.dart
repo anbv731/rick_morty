@@ -6,28 +6,43 @@ import 'package:rick_morty/components/episodes_list/bloc/screen_character_episod
 import 'package:rick_morty/components/episodes_list/bloc/screen_character_episodes_event.dart';
 import 'package:rick_morty/components/episodes_list/bloc/screen_character_episodes_state.dart';
 import 'package:rick_morty/components/loading_screen.dart';
-import 'package:rick_morty/screens/episodes/bloc/screen_episodes_state.dart';
+import 'package:rick_morty/data/episode_model.dart';
+import 'package:rick_morty/data/person_model.dart';
 import 'package:rick_morty/screens/episodes/screen.dart';
 import 'package:rick_morty/theme/text_theme.dart';
 
 class ListCharactersEpisodes extends StatelessWidget {
-  ListCharactersEpisodes();
+  ListCharactersEpisodes(this.person);
+  Person person;
+  List<Episode> list=[];
 
   @override
   Widget build(BuildContext context) {
     final bloc = ScreenCharacterEpisodesBloc();
     return BlocProvider<ScreenCharacterEpisodesBloc>(
-      create: (BuildContext context) => bloc..add(LoadingScreenCharacterEpisodesEvent()),
-      child: BlocBuilder<ScreenCharacterEpisodesBloc, ScreenCharacterEpisodesState>(
+      create: (BuildContext context) =>
+          bloc..add(LoadingScreenCharacterEpisodesEvent()),
+      child: BlocBuilder<ScreenCharacterEpisodesBloc,
+          ScreenCharacterEpisodesState>(
         builder: (_, state) {
           if (state is LoadingScreenCharacterEpisodesState) {
             return LoadingScreen();
           }
           if (state is DataScreenCharacterEpisodesState) {
+            for (int l = 0; l < person.episodes.length; l++) {
+              for (int i = 0; i < state.episodesList.length; i++) {
+                if (state.episodesList[i].id == person.episodes[l].id) {
+                  list.add(state.episodesList[i]);
+                } else {
+                  null;
+                }
+              }
+            }
+            ;
             return Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 16, right: 16),
+                  padding: const EdgeInsets.only(left: 16, right: 16,bottom: 24),
                   child: Row(
                     children: [
                       Expanded(
@@ -54,9 +69,11 @@ class ListCharactersEpisodes extends StatelessWidget {
                     ],
                   ),
                 ),
+
                 ...List.generate(
-                  state.episodesList.length,
-                  (index) => ElementOfEpisodesList(true, state.episodesList[index]),
+                  list.length,
+                  (index) =>
+                      ElementOfEpisodesList(true, list[index]),
                 ),
               ],
             );

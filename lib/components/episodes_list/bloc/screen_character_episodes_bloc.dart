@@ -6,6 +6,7 @@ import 'package:rick_morty/components/episodes_list/bloc/screen_character_episod
 import 'package:rick_morty/components/service_api.dart';
 import 'package:rick_morty/components/temporary_list_episodes.dart';
 import 'package:rick_morty/data/episode_model.dart';
+import 'package:rick_morty/data/person_model.dart';
 import 'package:rick_morty/screens/episodes/bloc/screen_episodes_event.dart';
 import 'dart:convert' as convert;
 import 'package:rick_morty/screens/episodes/bloc/screen_episodes_state.dart';
@@ -13,7 +14,6 @@ import 'package:rick_morty/screens/episodes/bloc/screen_episodes_state.dart';
 class ScreenCharacterEpisodesBloc
     extends Bloc<ScreenCharacterEpisodesEvent, ScreenCharacterEpisodesState> {
 
-  List<Episode> episodes = [];
   ScreenCharacterEpisodesBloc() : super(InitialScreenCharacterEpisodesState());
 
   @override
