@@ -12,17 +12,27 @@ import 'package:rick_morty/theme/text_theme.dart';
 
 class ScreenEpisode extends StatelessWidget {
   ScreenEpisode(this.episode);
-  List<Person>  _list = TempLists.tempListPer;
+
+  List<Person> _list = TempLists.tempListPer;
   Episode episode = Episode();
-  String loadingCharactersList ;
+  String loadingCharactersList;
+  List<String> month = [
+    'января',
+    'февраля',
+    'марта',
+    'апреля',
+    'мая',
+    'июня',
+    'июля',
+    'августа',
+    'сентября',
+    'октября',
+    'ноября',
+    'декабря'
+  ];
 
   @override
   Widget build(BuildContext context) {
-    episode.characters = episode.characters
-        .map((elementOfList) => elementOfList.replaceAll(
-        'https://rickandmortyapi.com/api/character/', ''))
-        .toList();
-    String loadingCharactersList = episode.characters.join(",");
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: PreferredSize(
@@ -55,7 +65,7 @@ class ScreenEpisode extends StatelessWidget {
                 children: <Widget>[
                   Column(
                     children: [
-                      Image.asset('assets/images/episode.png',
+                      Image.network(episode.imageName,
                           height: 298,
                           width: MediaQuery.of(context).size.width,
                           fit: BoxFit.cover),
@@ -70,16 +80,9 @@ class ScreenEpisode extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(top: 22),
+                              padding: EdgeInsets.only(top: 68),
                               child: Text(
-                                'Мир \u00B7 Измерение С-137',
-                                style: ThemeText.fieldDescription,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 32),
-                              child: Text(
-                                'Зигерионцы помещают Джерри и Рика в симуляцию, чтобы узнать секрет изготовления концентрированной темной материи.',
+                                episode.plot,
                                 style: ThemeText.description,
                                 textAlign: TextAlign.left,
                               ),
@@ -91,7 +94,8 @@ class ScreenEpisode extends StatelessWidget {
                                 style: ThemeText.fieldDescription,
                               ),
                             ),
-                            Text(episode.premiere.day.toString(),
+                            Text(
+                                '${episode.premiere.day} ${month[episode.premiere.month - 1]} ${episode.premiere.year}',
                                 style: ThemeText.description1),
                             Padding(
                               padding: EdgeInsets.only(
@@ -104,7 +108,7 @@ class ScreenEpisode extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(bottom:24),
+                              padding: const EdgeInsets.only(bottom: 24),
                               child: Text(
                                 'Персонажи',
                                 style: ThemeText.location,
@@ -130,16 +134,15 @@ class ScreenEpisode extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: ThemeText.locationName,
                           ),
-                          Text('Серия ${episode.id}', style: ThemeText.episods),
+                          Text('Серия ${episode.series}',
+                              style: ThemeText.episods),
                         ],
                       ),
                     ),
                   ),
                 ],
               ),
-              CharactersList(
-                  loadingCharactersList: loadingCharactersList,
-                  isScrollable: false),
+              CharactersList(argument: episode, isScrollable: false),
             ],
           ),
         ));

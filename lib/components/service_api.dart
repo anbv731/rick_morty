@@ -24,7 +24,6 @@ class ServiceApi {
     final results = (response.data)['data']
         .map((element) => Person.fromJson(element))
         .toList();
-    print(results);
 
     return List<Person>.from(results);
   }
@@ -39,22 +38,15 @@ class ServiceApi {
   }
 
   Future<List<Location>> getLocations() async {
-    final response = await _dio.get('location');
-    final results = (response.data)['results']
+    final response = await _dio.get('Locations/GetAll?PageNumber=1&PageSize=50');
+    final results = (response.data)['data']
         .map((element) => Location.fromJson(element))
         .toList();
 
     return List<Location>.from(results);
   }
 
-  Future<List<Person>> getCharactersOnly(String loadingCharactersList) async {
-    final response = await _dio.get('character/$loadingCharactersList');
-    final results = response.data
-        .map((element) => Person.fromJson(element))
-        .toList();
-
-    return List<Person>.from(results);
-  }
+ 
 
 
   }

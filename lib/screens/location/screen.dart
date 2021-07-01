@@ -20,12 +20,6 @@ class ScreenLocation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    location.residents = location.residents
-        .map((elementOfList) => elementOfList.replaceAll(
-            'https://rickandmortyapi.com/api/character/', ''))
-        .toList();
-    String loadingCharactersList = location.residents.join(",");
-print(loadingCharactersList);
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: PreferredSize(
@@ -58,7 +52,7 @@ print(loadingCharactersList);
                 children: <Widget>[
                   Column(
                     children: [
-                      Image.asset('assets/images/earth1.png',
+                      Image.network(location.imageName,
                           height: 298,
                           width: MediaQuery.of(context).size.width,
                           fit: BoxFit.cover),
@@ -75,14 +69,14 @@ print(loadingCharactersList);
                             Padding(
                               padding: const EdgeInsets.only(top: 22),
                               child: Text(
-                                'Мир · ${location.dimension}',
+                                '${location.type} · ${location.measurements}',
                                 style: ThemeText.fieldDescription,
                               ),
                             ),
                             Padding(
                               padding: EdgeInsets.only(top: 32),
                               child: Text(
-                                'Это планета, на которой проживает человеческая раса, и главное место для персонажей Рика и Морти. Возраст этой Земли более 4,6 миллиардов лет, и она является четвертой планетой от своей звезды.',
+                                location.about,
                                 style: ThemeText.description,
                                 textAlign: TextAlign.left,
                               ),
@@ -116,7 +110,7 @@ print(loadingCharactersList);
                 ],
               ),
               CharactersList(
-                  loadingCharactersList: loadingCharactersList,
+                  argument: location,
                   isScrollable: false),
             ],
           ),

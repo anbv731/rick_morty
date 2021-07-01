@@ -10,6 +10,20 @@ class ElementOfEpisodesList extends StatelessWidget {
 
   Episode episode;
   bool arrow;
+  List<String> month = [
+    'января',
+    'февраля',
+    'марта',
+    'апреля',
+    'мая',
+    'июня',
+    'июля',
+    'августа',
+    'сентября',
+    'октября',
+    'ноября',
+    'декабря'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +56,9 @@ class ElementOfEpisodesList extends StatelessWidget {
                     episode.name,
                     style: ThemeText.name,
                   ),
-                  Text('${episode.premiere.day} ${episode.premiere.month} ${episode.premiere.year}', style: ThemeText.date),
+                  Text(
+                      '${episode.premiere.day} ${month[episode.premiere.month - 1]} ${episode.premiere.year}',
+                      style: ThemeText.date),
                 ],
               ),
             ),

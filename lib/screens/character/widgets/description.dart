@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rick_morty/components/service_api.dart';
 import 'package:rick_morty/data/person_model.dart';
 import 'package:rick_morty/screens/location/screen.dart';
 import 'package:rick_morty/screens/locations/screen.dart';
@@ -10,6 +11,7 @@ class Description extends StatelessWidget {
   Description(this.person);
 
   Person person;
+
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +86,7 @@ class Description extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   Navigator.push(context,
-                      CupertinoPageRoute(builder: (context) => ScreenLocations()));
+                      CupertinoPageRoute(builder: (context) => ScreenLocation( )));
                 },
                 child: SizedBox(
                   height: 50,

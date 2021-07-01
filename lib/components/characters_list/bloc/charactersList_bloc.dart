@@ -14,10 +14,10 @@ import 'dart:convert' as convert;
 
 class CharactersListBloc
     extends Bloc<CharactersListEvent, CharactersListState> {
-  CharactersListBloc(this.loadingCharactersList) : super(InitialCharactersListState());
+  CharactersListBloc() : super(InitialCharactersListState());
   bool isList = true;
   List<Person> charactersList = [];
-  String loadingCharactersList;
+
 
   @override
   Stream<CharactersListState> mapEventToState(
@@ -33,7 +33,7 @@ class CharactersListBloc
 
     try {
       //ServiceApi.loadOnly(loadingCharactersList);
-      charactersList = await ServiceApi().getCharactersOnly(loadingCharactersList);
+      charactersList = await ServiceApi().getCharacters();
     } catch (ex) {
       print(ex);
       yield ErrorCharactersListState();

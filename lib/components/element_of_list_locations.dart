@@ -8,13 +8,14 @@ import 'package:rick_morty/screens/location/screen.dart';
 class ElementOfListLocations extends StatelessWidget {
   Location location;
 
-  ElementOfListLocations(this. location);
+  ElementOfListLocations(this.location);
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(
-            context, CupertinoPageRoute(builder: (context) => ScreenLocation(location)));
+        Navigator.push(context,
+            CupertinoPageRoute(builder: (context) => ScreenLocation(location)));
       },
       child: Container(
         margin: EdgeInsets.only(
@@ -32,8 +33,8 @@ class ElementOfListLocations extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(16), topRight: Radius.circular(16)),
-              child: Image.asset(
-                'assets/images/earth.png',
+              child: Image.network(
+                location.imageName,
                 fit: BoxFit.fitWidth,
                 height: 150,
                 width: MediaQuery.of(context).size.width,
@@ -41,7 +42,7 @@ class ElementOfListLocations extends StatelessWidget {
             ),
             Padding(
               padding:
-              EdgeInsets.only(left: 16, top: 12, right: 16, bottom: 12),
+                  EdgeInsets.only(left: 16, top: 12, right: 16, bottom: 12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -50,7 +51,7 @@ class ElementOfListLocations extends StatelessWidget {
                     style: ThemeText.location,
                   ),
                   Text(
-                    location.dimension,
+                    '${location.type} · ${location.measurements}',
                     style: ThemeText.fieldDescription,
                   ),
                 ],
