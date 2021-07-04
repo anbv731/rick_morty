@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rick_morty/components/service_api.dart';
+import 'package:rick_morty/data/location_model.dart';
 import 'package:rick_morty/data/person_model.dart';
 import 'package:rick_morty/screens/location/screen.dart';
 import 'package:rick_morty/screens/locations/screen.dart';
@@ -11,7 +12,6 @@ class Description extends StatelessWidget {
   Description(this.person);
 
   Person person;
-
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +31,10 @@ class Description extends StatelessWidget {
           const SizedBox(
             height: 4,
           ),
-          if (person.status==0)(Text('ЖИВОЙ', style: ThemeText.green))
-            else  (Text('МЕРТВЫЙ', style: ThemeText.red)),
+          if (person.status == 0)
+            (Text('ЖИВОЙ', style: ThemeText.green))
+          else
+            (Text('МЕРТВЫЙ', style: ThemeText.red)),
           const SizedBox(
             height: 36,
           ),
@@ -70,8 +72,7 @@ class Description extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Раса:', style: ThemeText.fieldDescription),
-                        Text('${person.race}',
-                            style: ThemeText.description1),
+                        Text('${person.race}', style: ThemeText.description1),
                       ],
                     ),
                   ),
@@ -85,8 +86,12 @@ class Description extends StatelessWidget {
               onTap: () {},
               child: InkWell(
                 onTap: () {
-                  Navigator.push(context,
-                      CupertinoPageRoute(builder: (context) => ScreenLocation( )));
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) => ScreenLocation(
+                                id: person.placeOfBirthId,
+                              )));
                 },
                 child: SizedBox(
                   height: 50,

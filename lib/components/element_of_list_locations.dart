@@ -15,7 +15,7 @@ class ElementOfListLocations extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.push(context,
-            CupertinoPageRoute(builder: (context) => ScreenLocation(location)));
+            CupertinoPageRoute(builder: (context) => ScreenLocation(location: location)));
       },
       child: Container(
         margin: EdgeInsets.only(

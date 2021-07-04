@@ -45,10 +45,10 @@ class ServiceApi {
 
     return List<Location>.from(results);
   }
-
- 
-
-
+  Future<Location> getLocationOnly(String id ) async {
+    final response = await _dio.get('Locations/GetById?Id=$id');
+    return Location.fromJson((response.data)['data']);
   }
+}
 
 
