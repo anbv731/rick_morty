@@ -46,7 +46,7 @@ class ScreenEpisode extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(left: 24, top: 40),
                 child: FloatingActionButton(
-                  backgroundColor: ThemeColors.search1,
+                  backgroundColor: Theme.of(context).dividerColor,
                   elevation: 1,
                   onPressed: () => {Navigator.pop(context)},
                   child: SvgPicture.asset('assets/svg_icons/arrow_back.svg'),
@@ -55,7 +55,7 @@ class ScreenEpisode extends StatelessWidget {
             ),
           ),
         ),
-        backgroundColor: ThemeColors.background,
+        backgroundColor: Theme.of(context).primaryColor,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -74,7 +74,7 @@ class ScreenEpisode extends StatelessWidget {
                         padding: EdgeInsets.only(left: 16, right: 16),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(16)),
-                            color: ThemeColors.background),
+                            color: Theme.of(context).primaryColor),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,12 +91,12 @@ class ScreenEpisode extends StatelessWidget {
                               padding: EdgeInsets.only(top: 24, bottom: 4),
                               child: Text(
                                 'Премьера',
-                                style: ThemeText.fieldDescription,
+                                style: Theme.of(context).textTheme.caption,
                               ),
                             ),
                             Text(
                                 '${episode.premiere.day} ${month[episode.premiere.month - 1]} ${episode.premiere.year}',
-                                style: ThemeText.description1),
+                                style: Theme.of(context).textTheme.bodyText2),
                             Padding(
                               padding: EdgeInsets.only(
                                 top: 36,
@@ -104,14 +104,14 @@ class ScreenEpisode extends StatelessWidget {
                               ),
                               child: Divider(
                                 thickness: 1,
-                                color: ThemeColors.text2,
+                                color: Theme.of(context).dividerColor,
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 24),
                               child: Text(
                                 'Персонажи',
-                                style: ThemeText.location,
+                                style: Theme.of(context).textTheme.headline6,
                               ),
                             ),
                           ],
@@ -126,13 +126,13 @@ class ScreenEpisode extends StatelessWidget {
                       padding: EdgeInsets.only(top: 34, left: 16, right: 16),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(16)),
-                          color: ThemeColors.background),
+                          color: Theme.of(context).primaryColor),
                       child: Column(
                         children: [
                           Text(
                             episode.name,
                             textAlign: TextAlign.center,
-                            style: ThemeText.locationName,
+                            style: Theme.of(context).textTheme.subtitle2,
                           ),
                           Text('Серия ${episode.series}',
                               style: ThemeText.episods),

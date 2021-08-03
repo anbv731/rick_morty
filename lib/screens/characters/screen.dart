@@ -28,10 +28,10 @@ class ScreenCharacters extends StatelessWidget {
           }
           if (state is DataScreenCharactersState) {
             return Scaffold(
-              backgroundColor: ThemeColors.background,
+              backgroundColor: Theme.of(context).primaryColor,
               appBar: AppBar(
                 elevation: 0,
-                backgroundColor: ThemeColors.background,
+                backgroundColor: Theme.of(context).primaryColor,
                 automaticallyImplyLeading: false,
                 title: Search('Найти персонажа', true),
                 bottom: PreferredSize(
@@ -39,10 +39,7 @@ class ScreenCharacters extends StatelessWidget {
                   child: ListTile(
                       leading: Text(
                           'ВСЕГО ПЕРСОНАЖЕЙ: ${state.charactersList.length ?? 0}',
-                          style: TextStyle(
-                              color: ThemeColors.text2,
-                              fontSize: 10,
-                              height: 1.6)),
+                          style: Theme.of(context).textTheme.overline),
                       trailing: InkWell(
                           onTap: () {
                             bloc.add(ChangeViewScreenCharactersEvent(

@@ -13,7 +13,7 @@ class Search extends StatelessWidget {
       child: TextField(
         decoration: InputDecoration(
             hintText: hintText,
-            hintStyle: TextStyle(color: ThemeColors.text2, fontSize: 16),
+            hintStyle: Theme.of(context).textTheme.bodyText1,
             prefixIcon: Padding(
               padding: const EdgeInsets.all(12.0),
               child: SvgPicture.asset(
@@ -29,7 +29,7 @@ class Search extends StatelessWidget {
                       VerticalDivider(
                         indent: 12,
                         endIndent: 12,
-                        color: ThemeColors.text2,
+                        color: Theme.of(context).dividerColor,
                       ),
                       Padding(
                           padding: const EdgeInsets.only(left: 13, right: 19),
@@ -41,7 +41,7 @@ class Search extends StatelessWidget {
                 : null),
       ),
       decoration: BoxDecoration(
-        color: ThemeColors.search1,
+        color: Theme.of(context).dialogBackgroundColor,
         borderRadius: BorderRadius.all(
           Radius.circular(24),
         ),

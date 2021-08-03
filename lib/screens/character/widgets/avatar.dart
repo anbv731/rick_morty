@@ -40,7 +40,7 @@ class Avatar extends StatelessWidget {
             top: MediaQuery.of(context).size.height / 4 - 80,
             child: CircleAvatar(
                 radius: 80,
-                backgroundColor: ThemeColors.background,
+                backgroundColor: Theme.of(context).primaryColor,
                 child: ClipOval(
                   child: Image.network(
                     person.imageName,

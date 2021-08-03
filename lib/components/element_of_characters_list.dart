@@ -43,10 +43,10 @@ class ElementOfCharectersList extends StatelessWidget {
                   else
                     (Text('МЕРТВЫЙ', style: ThemeText.red)),
                   Text(person.fullName,
-                    style: ThemeText.name,
+                    style: Theme.of(context).textTheme.headline2,
                   ),
                   Text('${person.race} , ${person.gender}',
-                      style: ThemeText.fieldDescription),
+                      style: Theme.of(context).textTheme.caption),
                 ],
                 crossAxisAlignment: CrossAxisAlignment.start,
               ),

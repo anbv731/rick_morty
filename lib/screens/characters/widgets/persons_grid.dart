@@ -27,34 +27,32 @@ class PersonsGrid extends StatelessWidget {
                       builder: (context) => Character(persons[index])));
             },
             child: Column(
-                children: [
-            Padding(
-            padding: const EdgeInsets.only(bottom: 18),
-            child: SizedBox(
-              height: 120,
-              width: 120,
-              child: ClipOval(
-                child: Image.network(
-                  persons[index].imageName,
-                  fit: BoxFit.cover,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 18),
+                  child: SizedBox(
+                    height: 120,
+                    width: 120,
+                    child: ClipOval(
+                      child: Image.network(
+                        persons[index].imageName,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+                if (persons[index].status == 0)
+                  (Text('ЖИВОЙ', style: ThemeText.green))
+                else
+                  (Text('МЕРТВЫЙ', style: ThemeText.green)),
+                Text(
+                  persons[index].fullName,
+                  style: Theme.of(context).textTheme.headline2,
+                ),
+                Text('${persons[index].race} , ${persons[index].gender}',
+                    style: ThemeText.description),
+              ],
             ),
-          ),
-          if (persons[index].status == 0)
-          (Text('ЖИВОЙ', style: ThemeText.green))
-          else
-          (Text('МЕРТВЫЙ', style: ThemeText.green)),
-          Text(
-          persons[index].fullName,
-          style: ThemeText.name,
-          ),
-          Text('${persons[index].race} , ${persons[index].gender}',
-          style: ThemeText.description),
-          ]
-          ,
-          )
-          ,
           );
         });
   }

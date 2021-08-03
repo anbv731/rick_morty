@@ -1,16 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ThemeColor{
-  static const Color background = Color.fromRGBO(5, 35, 50, 1);
-  static const Color text1 = Colors.white;
-  static const Color text2 = Color.fromRGBO(110, 121, 140, 1);
-  static const Color search1 = Color.fromRGBO(21, 42, 58, 1);
-  static const Color text3 = Color.fromRGBO(67, 208, 73, 1);
-  static const Color text4 = Color.fromRGBO(34, 162, 189, 0.87);
-  static const Color text5 = Color.fromRGBO(235, 87, 87, 1);
-  static const Color textdescript = Color.fromRGBO(91, 105, 117, 1);
-
-}
+// All active project colors
 class AppColors {
   static const green = Color(0xFF43D049);//text3
   static const red = Color(0xFFEB5757);//text5

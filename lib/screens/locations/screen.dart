@@ -27,20 +27,15 @@ class ScreenLocations extends StatelessWidget {
           if (state is DataScreenLocationsState) {
             return
               Scaffold(
-                backgroundColor: ThemeColors.background,
                 appBar: AppBar(
                   elevation: 0,
-                  backgroundColor: ThemeColors.background,
                   automaticallyImplyLeading: false,
                   title: Search('Найти локацию', true),
                   bottom: PreferredSize(
                     preferredSize: Size.fromHeight(60),
                     child: ListTile(
                       leading: Text('ВСЕГО ЛОКАЦИЙ: 200',
-                          style: TextStyle(
-                              color: ThemeColors.text2,
-                              fontSize: 10,
-                              height: 1.6)),
+                          style: Theme.of(context).textTheme.overline),
                     ),
                   ),
                 ),

@@ -56,8 +56,8 @@ class Description extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Пол:', style: ThemeText.fieldDescription),
-                        Text('${person.gender}', style: ThemeText.description1),
+                        Text('Пол:', style: Theme.of(context).textTheme.caption),
+                        Text('${person.gender}', style: Theme.of(context).textTheme.bodyText2),
                       ],
                     ),
                   ),
@@ -71,8 +71,8 @@ class Description extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Раса:', style: ThemeText.fieldDescription),
-                        Text('${person.race}', style: ThemeText.description1),
+                        Text('Раса:', style: Theme.of(context).textTheme.caption),
+                        Text('${person.race}', style: Theme.of(context).textTheme.bodyText2),
                       ],
                     ),
                   ),
@@ -102,9 +102,9 @@ class Description extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Место рождения:',
-                                style: ThemeText.fieldDescription),
+                                style: Theme.of(context).textTheme.caption),
                             Text('${person.placeOfBirth}',
-                                style: ThemeText.description1),
+                                style: Theme.of(context).textTheme.bodyText2),
                           ],
                         ),
                       ),

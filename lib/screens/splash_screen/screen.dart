@@ -13,7 +13,6 @@ class StartScreen1 extends StatelessWidget {
             context, MaterialPageRoute(builder: (context) => ScreenCharacters()));
       },
       child: Scaffold(
-        backgroundColor: ThemeColors.background,
         body: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,

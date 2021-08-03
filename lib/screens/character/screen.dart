@@ -27,7 +27,7 @@ class Character extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 24, top: 40),
               child: FloatingActionButton(
-                backgroundColor: ThemeColors.search1,
+                backgroundColor: Theme.of(context).dividerColor,
                 elevation: 1,
                 onPressed: () => {Navigator.pop(context)},
                 child: SvgPicture.asset('assets/svg_icons/arrow_back.svg'),
@@ -36,7 +36,7 @@ class Character extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: ThemeColors.background,
+      backgroundColor: Theme.of(context).primaryColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -49,7 +49,7 @@ class Character extends StatelessWidget {
               ),
               child: Divider(
                 thickness: 1,
-                color: ThemeColors.text2,
+                color: Theme.of(context).dividerColor,
               ),
             ),
             ListCharactersEpisodes(person),

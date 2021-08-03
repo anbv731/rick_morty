@@ -34,7 +34,7 @@ class ScreenLocation extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(left: 24, top: 40),
                 child: FloatingActionButton(
-                  backgroundColor: ThemeColors.search1,
+                  backgroundColor: Theme.of(context).dividerColor,
                   elevation: 1,
                   onPressed: () => {Navigator.pop(context)},
                   child: SvgPicture.asset('assets/svg_icons/arrow_back.svg'),
@@ -43,7 +43,6 @@ class ScreenLocation extends StatelessWidget {
             ),
           ),
         ),
-        backgroundColor: ThemeColors.background,
         body: location == null
             ? FutureBuilder(
                 future: ServiceApi().getLocationOnly(id),
@@ -79,7 +78,7 @@ class ScreenBody extends StatelessWidget {
                     padding: EdgeInsets.only(left: 16, right: 16),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(16)),
-                        color: ThemeColors.background),
+                        color: Theme.of(context).primaryColor),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,7 +87,7 @@ class ScreenBody extends StatelessWidget {
                           padding: const EdgeInsets.only(top: 22),
                           child: Text(
                             '${location.type} · ${location.measurements}',
-                            style: ThemeText.fieldDescription,
+                            style: Theme.of(context).textTheme.caption,
                           ),
                         ),
                         Padding(
@@ -103,7 +102,7 @@ class ScreenBody extends StatelessWidget {
                           padding: EdgeInsets.only(top: 36, bottom: 24),
                           child: Text(
                             'Персонажи',
-                            style: ThemeText.location,
+                            style: Theme.of(context).textTheme.headline6,
                           ),
                         ),
                       ],
@@ -118,10 +117,10 @@ class ScreenBody extends StatelessWidget {
                   padding: EdgeInsets.only(top: 34, left: 16, right: 16),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(16)),
-                      color: ThemeColors.background),
+                      color: Theme.of(context).primaryColor),
                   child: Text(
                     location.name,
-                    style: ThemeText.locationName,
+                    style: Theme.of(context).textTheme.subtitle2,
                   ),
                 ),
               ),

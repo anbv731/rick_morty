@@ -26,7 +26,7 @@ class ElementOfListLocations extends StatelessWidget {
         height: 218,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(16)),
-            color: ThemeColors.search1),
+            color: Theme.of(context).dividerColor),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -48,11 +48,11 @@ class ElementOfListLocations extends StatelessWidget {
                 children: [
                   Text(
                     location.name,
-                    style: ThemeText.location,
+                    style: Theme.of(context).textTheme.headline6,
                   ),
                   Text(
                     '${location.type} · ${location.measurements}',
-                    style: ThemeText.fieldDescription,
+                    style: Theme.of(context).textTheme.caption,
                   ),
                 ],
               ),

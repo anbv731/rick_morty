@@ -13,8 +13,9 @@ import 'package:rick_morty/theme/text_theme.dart';
 
 class ListCharactersEpisodes extends StatelessWidget {
   ListCharactersEpisodes(this.person);
+
   Person person;
-  List<Episode> list=[];
+  List<Episode> list = [];
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,8 @@ class ListCharactersEpisodes extends StatelessWidget {
             return Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 16, right: 16,bottom: 24),
+                  padding:
+                      const EdgeInsets.only(left: 16, right: 16, bottom: 24),
                   child: Row(
                     children: [
                       Expanded(
@@ -63,17 +65,15 @@ class ListCharactersEpisodes extends StatelessWidget {
                         },
                         child: Text(
                           'Все эпизоды',
-                          style: ThemeText.fieldDescription,
+                          style: Theme.of(context).textTheme.caption,
                         ),
                       ),
                     ],
                   ),
                 ),
-
                 ...List.generate(
                   list.length,
-                  (index) =>
-                      ElementOfEpisodesList(true, list[index]),
+                  (index) => ElementOfEpisodesList(true, list[index]),
                 ),
               ],
             );

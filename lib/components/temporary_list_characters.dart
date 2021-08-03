@@ -45,10 +45,10 @@ class TemporaryListCharacters extends StatelessWidget {
                       Text('ЖИВОЙ', style: ThemeText.green),
                       Text(
                         'Морти Смитт',
-                        style: ThemeText.name,
+                        style: Theme.of(context).textTheme.headline2,
                       ),
                       Text('Человек , Мужской',
-                          style: ThemeText.fieldDescription),
+                          style: Theme.of(context).textTheme.caption),
                     ],
                     crossAxisAlignment: CrossAxisAlignment.start,
                   ),

@@ -53,10 +53,8 @@ class ScreenEpisodes extends StatelessWidget {
             return DefaultTabController(
               length: 5,
               child: Scaffold(
-                backgroundColor: ThemeColors.background,
                 appBar: AppBar(
                   elevation: 0,
-                  backgroundColor: ThemeColors.background,
                   automaticallyImplyLeading: false,
                   title: Search('Найти эпизод', false),
                   bottom: TabBar(
@@ -67,11 +65,11 @@ class ScreenEpisodes extends StatelessWidget {
                     indicatorColor: Colors.white,
                     indicatorPadding: EdgeInsets.only(top: 5, bottom: 2),
                     tabs: [
-                      Text('СЕЗОН 1', style: ThemeText.season),
-                      Text('СЕЗОН 2', style: ThemeText.season),
-                      Text('СЕЗОН 3', style: ThemeText.season),
-                      Text('СЕЗОН 4', style: ThemeText.season),
-                      Text('СЕЗОН 5', style: ThemeText.season),
+                      Text('СЕЗОН 1', style: Theme.of(context).textTheme.headline5),
+                      Text('СЕЗОН 2', style: Theme.of(context).textTheme.headline5),
+                      Text('СЕЗОН 3', style: Theme.of(context).textTheme.headline5),
+                      Text('СЕЗОН 4', style: Theme.of(context).textTheme.headline5),
+                      Text('СЕЗОН 5', style: Theme.of(context).textTheme.headline5),
                     ],
                   ),
                 ),

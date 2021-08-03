@@ -9,7 +9,6 @@ class ScreenSettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ThemeColors.background,
       body: Padding(
         padding: const EdgeInsets.only(left: 16, right: 16, top: 57),
         child: Column(
@@ -17,14 +16,14 @@ class ScreenSettings extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 53),
-              child: Text('Настройки', style: ThemeText.location),
+              child: Text('Настройки', style: Theme.of(context).textTheme.headline6),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 24.0),
-              child: Text('ВНЕШНИЙ ВИД', style: ThemeText.about),
+              child: Text('ВНЕШНИЙ ВИД', style: Theme.of(context).textTheme.overline),
             ),
             ElevatedButton(
-              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(ThemeColors.background),),
+              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),),
               child: Row(
                 children: [
                   Padding(
@@ -37,11 +36,11 @@ class ScreenSettings extends StatelessWidget {
                       children: [
                         Text(
                           'Темная тема',
-                          style: ThemeText.theme,
+                          style: Theme.of(context).textTheme.headline3,
                         ),
                         Text(
                           'Включена',
-                          style: ThemeText.date,
+                          style: Theme.of(context).textTheme.headline1,
                         ),
                       ],
                     ),
@@ -61,29 +60,29 @@ class ScreenSettings extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 36),
               child: Divider(
-                color: ThemeColors.text2,
+                color: Theme.of(context).dividerColor,
               ),
             ),
             Text(
               'О ПРИЛОЖЕНИИ',
-              style: ThemeText.about,
+              style: Theme.of(context).textTheme.overline,
             ),
             Text(
               'Зигерионцы помещают Джерри и Рика в симуляцию, чтобы узнать секрет изготовления концен-трирован- ной темной материи.',
-              style: ThemeText.description1,
+              style: Theme.of(context).textTheme.bodyText2,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 36),
               child: Divider(
-                color: ThemeColors.text2,
+                color: Theme.of(context).dividerColor,
               ),
             ),
-            Text('ВЕРСИЯ ПРИЛОЖЕНИЯ', style: ThemeText.about),
+            Text('ВЕРСИЯ ПРИЛОЖЕНИЯ', style:Theme.of(context).textTheme.overline),
             Padding(
               padding: const EdgeInsets.only(top: 24),
               child: Text(
                 'Rick & Morty v1.0.0',
-                style: ThemeText.description1,
+                style: Theme.of(context).textTheme.bodyText2,
               ),
             )
           ],

@@ -54,11 +54,11 @@ class ElementOfEpisodesList extends StatelessWidget {
                   Text('Серия ${episode.series}', style: ThemeText.episods),
                   Text(
                     episode.name,
-                    style: ThemeText.name,
+                    style: Theme.of(context).textTheme.headline2,
                   ),
                   Text(
                       '${episode.premiere.day} ${month[episode.premiere.month - 1]} ${episode.premiere.year}',
-                      style: ThemeText.date),
+                      style: Theme.of(context).textTheme.headline1),
                 ],
               ),
             ),
