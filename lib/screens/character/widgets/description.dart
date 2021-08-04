@@ -22,11 +22,7 @@ class Description extends StatelessWidget {
           Text(
             person.fullName,
             textAlign: TextAlign.center,
-            style: const TextStyle(
-                fontSize: 34,
-                height: 40 / 34,
-                fontWeight: FontWeight.w400,
-                color: Colors.white),
+            style: Theme.of(context).textTheme.headline4,
           ),
           const SizedBox(
             height: 4,
@@ -41,7 +37,7 @@ class Description extends StatelessWidget {
           Text(
             '${person.about}',
             textAlign: TextAlign.left,
-            style: ThemeText.description,
+            style: Theme.of(context).textTheme.headline5,
           ),
           const SizedBox(
             height: 24,

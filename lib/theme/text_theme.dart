@@ -18,15 +18,5 @@ class ThemeText {
       fontWeight: FontWeight.w500,
       color: AppColors.lightBlue,
       height: 1.6);
-  static const TextStyle description = TextStyle(
-      fontSize: 13,
-      fontWeight: FontWeight.w400,
-      color: Colors.white,
-      height: 19.3 / 13);
-  static const TextStyle location = TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.w500,
-      color: Colors.white,
-      height: 28 / 20);
 
 }

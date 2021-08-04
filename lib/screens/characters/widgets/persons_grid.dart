@@ -50,7 +50,7 @@ class PersonsGrid extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline2,
                 ),
                 Text('${persons[index].race} , ${persons[index].gender}',
-                    style: ThemeText.description),
+                    style: Theme.of(context).textTheme.headline5,),
               ],
             ),
           );

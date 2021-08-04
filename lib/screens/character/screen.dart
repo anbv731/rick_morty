@@ -27,7 +27,7 @@ class Character extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 24, top: 40),
               child: FloatingActionButton(
-                backgroundColor: Theme.of(context).dividerColor,
+                backgroundColor: Colors.transparent,
                 elevation: 1,
                 onPressed: () => {Navigator.pop(context)},
                 child: SvgPicture.asset('assets/svg_icons/arrow_back.svg'),

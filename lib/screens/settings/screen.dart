@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 import 'package:rick_morty/screens/settings/widgets/dialog_screen.dart';
 import 'package:rick_morty/theme/color_theme.dart';
 import 'package:rick_morty/theme/text_theme.dart';
+import 'package:rick_morty/theme/theme_manager.dart';
+import 'package:rick_morty/theme/theme_types.dart';
 
 class ScreenSettings extends StatelessWidget {
   @override
@@ -39,7 +42,9 @@ class ScreenSettings extends StatelessWidget {
                           style: Theme.of(context).textTheme.headline3,
                         ),
                         Text(
-                          'Включена',
+                            themeName(
+                              Provider.of<ThemeNotifier>(context).getThemeType(),
+                            ),
                           style: Theme.of(context).textTheme.headline1,
                         ),
                       ],

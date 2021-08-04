@@ -46,7 +46,8 @@ class DialogScreen extends StatelessWidget {
               children: [
                 RadioListTile<ThemeType>(
                   title: Text(
-                    "Dark theme",
+                    "Включена",
+                    style: Theme.of(context).textTheme.headline5,
                   ),
                   value: ThemeType.dark,
                   groupValue: themeVM.getThemeType(),
@@ -54,7 +55,8 @@ class DialogScreen extends StatelessWidget {
                 ),
                 RadioListTile<ThemeType>(
                   title: Text(
-                    "Light theme",
+                    "Выключена",
+                    style: Theme.of(context).textTheme.headline5,
                   ),
                   value: ThemeType.light,
                   groupValue: themeVM.getThemeType(),
@@ -62,7 +64,8 @@ class DialogScreen extends StatelessWidget {
                 ),
                 RadioListTile<ThemeType>(
                   title: Text(
-                    "Follow the System Settings",
+                    "Следовать настройкам системы",
+                    style: Theme.of(context).textTheme.headline5,
                   ),
                   value: ThemeType.byDevice,
                   groupValue: themeVM.getThemeType(),

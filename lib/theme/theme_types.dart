@@ -3,10 +3,10 @@ enum ThemeType { dark, light, byDevice }
 String themeName(ThemeType themeType) {
   switch (themeType) {
     case ThemeType.dark:
-      return "Dark Theme";
+      return "Включена";
     case ThemeType.light:
-      return "Light Theme";
+      return "Выключена";
     case ThemeType.byDevice:
-      return "Follow the system settings";
+      return "Следовать настройкам системы";
   }
 }

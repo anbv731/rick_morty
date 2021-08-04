@@ -34,7 +34,7 @@ class ScreenLocation extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(left: 24, top: 40),
                 child: FloatingActionButton(
-                  backgroundColor: Theme.of(context).dividerColor,
+                  backgroundColor: Colors.transparent,
                   elevation: 1,
                   onPressed: () => {Navigator.pop(context)},
                   child: SvgPicture.asset('assets/svg_icons/arrow_back.svg'),
@@ -94,7 +94,7 @@ class ScreenBody extends StatelessWidget {
                           padding: EdgeInsets.only(top: 32),
                           child: Text(
                             location.about,
-                            style: ThemeText.description,
+                            style: Theme.of(context).textTheme.headline5,
                             textAlign: TextAlign.left,
                           ),
                         ),
