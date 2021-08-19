@@ -27,6 +27,14 @@ class ServiceApi {
 
     return List<Person>.from(results);
   }
+  Future<List<Person>> getSearchCharacters(String request) async {
+    final response = await _dio.get('Characters/Filter?Name=$request');
+    final results = (response.data)['data']
+        .map((element) => Person.fromJson(element))
+        .toList();
+
+    return List<Person>.from(results);
+  }
 
   Future<List<Episode>> getEpisodes() async {
     final response = await _dio.get('Episodes/GetAll?PageNumber=1&PageSize=50');
@@ -37,8 +45,25 @@ class ServiceApi {
     return List<Episode>.from(results);
   }
 
+  Future<List<Episode>> getSearchEpisodes(request) async {
+    final response = await _dio.get('Episodes/Filter?Name=$request');
+    final results = (response.data)['data']
+        .map((element) => Episode.fromJson(element))
+        .toList();
+
+    return List<Episode>.from(results);
+  }
+
   Future<List<Location>> getLocations() async {
     final response = await _dio.get('Locations/GetAll?PageNumber=1&PageSize=50');
+    final results = (response.data)['data']
+        .map((element) => Location.fromJson(element))
+        .toList();
+
+    return List<Location>.from(results);
+  }
+  Future<List<Location>> getSearchLocations(String request) async {
+    final response = await _dio.get('Locations/Filter?Name=$request');
     final results = (response.data)['data']
         .map((element) => Location.fromJson(element))
         .toList();

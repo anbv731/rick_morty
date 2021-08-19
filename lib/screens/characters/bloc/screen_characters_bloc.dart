@@ -1,4 +1,3 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:rick_morty/components/service_api.dart';
@@ -8,22 +7,24 @@ import 'package:rick_morty/screens/characters/bloc/screen_characters_event.dart'
 import 'package:rick_morty/screens/characters/bloc/screen_characters_state.dart';
 import 'dart:convert' as convert;
 
-
-
 class ScreenCharactersBloc
     extends Bloc<ScreenCharactersEvent, ScreenCharactersState> {
   ScreenCharactersBloc() : super(InitialScreenCharactersState());
   bool isList = true;
   List<Person> results = [];
+  String request;
 
   @override
   Stream<ScreenCharactersState> mapEventToState(
     ScreenCharactersEvent event,
   ) async* {
-    if (event is InitialScreenCharactersEvent){
+    if (event is InitialScreenCharactersEvent) {
       yield* _mapInitialScreenCharactersEvent();
     }
-    if (event is ChangeViewScreenCharactersEvent){
+    if (event is SearchScreenCharactersEvent) {
+      yield* _mapSearchScreenCharactersEvent(event);
+    }
+    if (event is ChangeViewScreenCharactersEvent) {
       yield* _mapChangeViewScreenCharactersEvent(event);
     }
   }
@@ -38,6 +39,23 @@ class ScreenCharactersBloc
       yield ErrorScreenCharactersState();
     }
 
+    /// Возвращаем состояние с данными
+    yield DataScreenCharactersState(
+      charactersList: results,
+      isList: isList,
+    );
+  }
+
+  Stream<ScreenCharactersState> _mapSearchScreenCharactersEvent(
+      SearchScreenCharactersEvent event) async* {
+    yield LoadingScreenCharactersState();
+    request = event.request;
+    try {
+      results = await ServiceApi().getSearchCharacters(request);
+    } catch (ex) {
+      print(ex);
+      yield ErrorScreenCharactersState();
+    }
 
     /// Возвращаем состояние с данными
     yield DataScreenCharactersState(
@@ -46,7 +64,8 @@ class ScreenCharactersBloc
     );
   }
 
-  Stream<ScreenCharactersState> _mapChangeViewScreenCharactersEvent(ChangeViewScreenCharactersEvent event) async* {
+  Stream<ScreenCharactersState> _mapChangeViewScreenCharactersEvent(
+      ChangeViewScreenCharactersEvent event) async* {
     yield LoadingScreenCharactersState();
     isList = !event.isList;
     yield DataScreenCharactersState(
@@ -55,8 +74,3 @@ class ScreenCharactersBloc
     );
   }
 }
-
-
-
-
-

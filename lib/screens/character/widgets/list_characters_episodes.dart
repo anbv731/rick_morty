@@ -58,10 +58,7 @@ class ListCharactersEpisodes extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                  builder: (context) => ScreenEpisodes()));
+                          Navigator.pushNamed(context, '/',arguments: 2);
                         },
                         child: Text(
                           'Все эпизоды',

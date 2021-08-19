@@ -1,4 +1,3 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:rick_morty/components/service_api.dart';
@@ -12,13 +11,17 @@ class ScreenEpisodesBloc
     extends Bloc<ScreenEpisodesEvent, ScreenEpisodesState> {
   ScreenEpisodesBloc() : super(InitialScreenEpisodesState());
   List<Episode> episodes = [];
+  String request;
 
   @override
   Stream<ScreenEpisodesState> mapEventToState(
-      ScreenEpisodesEvent event,
-      ) async* {
-    if (event is LoadingScreenEpisodesEvent){
+    ScreenEpisodesEvent event,
+  ) async* {
+    if (event is LoadingScreenEpisodesEvent) {
       yield* _mapLoadingScreenEpisodesEvent();
+    }
+    if (event is SearchScreenEpisodesEvent) {
+      yield* _mapSearchScreenEpisodesEvent(event);
     }
   }
 
@@ -26,23 +29,33 @@ class ScreenEpisodesBloc
     yield LoadingScreenEpisodesState();
     List<Episode> episodes = [];
     try {
-      episodes= await ServiceApi().getEpisodes();
-    }
-    catch (ex) {
+      episodes = await ServiceApi().getEpisodes();
+    } catch (ex) {
       print(ex);
       yield ErrorScreenEpisodesState();
     }
 
-    TempLists.tempListEp = episodes;
     /// Возвращаем состояние с данными
     yield DataScreenEpisodesState(
       episodesList: episodes,
+    );
+  }
 
+  Stream<ScreenEpisodesState> _mapSearchScreenEpisodesEvent(
+      SearchScreenEpisodesEvent event) async* {
+    yield LoadingScreenEpisodesState();
+    List<Episode> episodes = [];
+    request = event.request;
+    try {
+      episodes = await ServiceApi().getSearchEpisodes(request);
+    } catch (ex) {
+      print(ex);
+      yield ErrorScreenEpisodesState();
+    }
+
+    /// Возвращаем состояние с данными
+    yield DataScreenEpisodesState(
+      episodesList: episodes,
     );
   }
 }
-
-
-
-
-

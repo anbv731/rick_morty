@@ -12,12 +12,14 @@ import 'bloc/screen_characters_bloc.dart';
 import 'bloc/screen_characters_event.dart';
 import 'bloc/screen_characters_state.dart';
 
-
 class ScreenCharacters extends StatelessWidget {
   final bloc = ScreenCharactersBloc();
 
   @override
   Widget build(BuildContext context) {
+    Function(String) event = (String text) {
+      bloc.add(SearchScreenCharactersEvent(request:  text));
+    };
     return BlocProvider<ScreenCharactersBloc>(
       create: (BuildContext context) =>
           bloc..add(InitialScreenCharactersEvent()),
@@ -33,7 +35,7 @@ class ScreenCharacters extends StatelessWidget {
                 elevation: 0,
                 backgroundColor: Theme.of(context).primaryColor,
                 automaticallyImplyLeading: false,
-                title: Search('Найти персонажа', true),
+                title: Search('Найти персонажа', true, function: event),
                 bottom: PreferredSize(
                   preferredSize: Size.fromHeight(60),
                   child: ListTile(
@@ -52,7 +54,8 @@ class ScreenCharacters extends StatelessWidget {
               ),
               body: SafeArea(
                 child: state.isList
-                    ? PersonsList(persons: state.charactersList, isScrollable: true)
+                    ? PersonsList(
+                        persons: state.charactersList, isScrollable: true)
                     : PersonsGrid(
                         persons: state.charactersList,
                       ),

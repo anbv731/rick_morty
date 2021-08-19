@@ -26,6 +26,9 @@ class ScreenEpisodes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Function(String) event = (String text) {
+      bloc.add(SearchScreenEpisodesEvent(request:  text));
+    };
     return BlocProvider<ScreenEpisodesBloc>(
       create: (BuildContext context) => bloc..add(LoadingScreenEpisodesEvent()),
       child: BlocBuilder<ScreenEpisodesBloc, ScreenEpisodesState>(
@@ -56,7 +59,7 @@ class ScreenEpisodes extends StatelessWidget {
                 appBar: AppBar(
                   elevation: 0,
                   automaticallyImplyLeading: false,
-                  title: Search('Найти эпизод', false),
+                  title: Search('Найти эпизод', false,function: event,),
                   bottom: TabBar(
                     isScrollable: true,
                     labelPadding:

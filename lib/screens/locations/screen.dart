@@ -16,6 +16,10 @@ class ScreenLocations extends StatelessWidget {
   final bloc = ScreenLocationsBloc();
   @override
   Widget build(BuildContext context) {
+    Function(String) event = (String text) {
+      bloc.add(SearchScreenLocationsEvent(request:  text));
+    };
+
     return BlocProvider(create: (BuildContext context) =>
     bloc
       ..add(LoadingScreenLocationsEvent()),
@@ -30,11 +34,11 @@ class ScreenLocations extends StatelessWidget {
                 appBar: AppBar(
                   elevation: 0,
                   automaticallyImplyLeading: false,
-                  title: Search('Найти локацию', true),
+                  title: Search('Найти локацию', true,function: event,),
                   bottom: PreferredSize(
                     preferredSize: Size.fromHeight(60),
                     child: ListTile(
-                      leading: Text('ВСЕГО ЛОКАЦИЙ: 200',
+                      leading: Text('ВСЕГО ЛОКАЦИЙ: ${state.locationsList.length}',
                           style: Theme.of(context).textTheme.overline),
                     ),
                   ),

@@ -7,3 +7,8 @@ class ChangeViewScreenCharactersEvent extends ScreenCharactersEvent {
 
   ChangeViewScreenCharactersEvent({this.isList});
 }
+class SearchScreenCharactersEvent extends ScreenCharactersEvent {
+  String request;
+
+  SearchScreenCharactersEvent({this.request});
+}
