@@ -28,7 +28,7 @@ class ServiceApi {
     return List<Person>.from(results);
   }
   Future<List<Person>> getSearchCharacters(String request) async {
-    final response = await _dio.get('Characters/Filter?Name=$request');
+    final response = await _dio.get('Characters/Filter?Name=$request&Status[]=&Gender[]=');
     final results = (response.data)['data']
         .map((element) => Person.fromJson(element))
         .toList();
