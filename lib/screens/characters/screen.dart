@@ -21,7 +21,7 @@ class ScreenCharacters extends StatelessWidget {
       bloc.add(SearchScreenCharactersEvent(request:  text));
     };
     return BlocProvider<ScreenCharactersBloc>(
-      create: (BuildContext context) =>
+            create: (BuildContext context) =>
           bloc..add(InitialScreenCharactersEvent()),
       child: BlocBuilder<ScreenCharactersBloc, ScreenCharactersState>(
         builder: (_, state) {

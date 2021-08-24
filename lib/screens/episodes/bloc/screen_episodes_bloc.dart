@@ -17,15 +17,15 @@ class ScreenEpisodesBloc
   Stream<ScreenEpisodesState> mapEventToState(
     ScreenEpisodesEvent event,
   ) async* {
-    if (event is LoadingScreenEpisodesEvent) {
-      yield* _mapLoadingScreenEpisodesEvent();
+    if (event is InitialScreenEpisodesEvent) {
+      yield* _mapInitialScreenEpisodesEvent();
     }
     if (event is SearchScreenEpisodesEvent) {
       yield* _mapSearchScreenEpisodesEvent(event);
     }
   }
 
-  Stream<ScreenEpisodesState> _mapLoadingScreenEpisodesEvent() async* {
+  Stream<ScreenEpisodesState> _mapInitialScreenEpisodesEvent() async* {
     yield LoadingScreenEpisodesState();
     List<Episode> episodes = [];
     try {

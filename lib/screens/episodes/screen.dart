@@ -30,13 +30,18 @@ class ScreenEpisodes extends StatelessWidget {
       bloc.add(SearchScreenEpisodesEvent(request:  text));
     };
     return BlocProvider<ScreenEpisodesBloc>(
-      create: (BuildContext context) => bloc..add(LoadingScreenEpisodesEvent()),
+      create: (BuildContext context) => bloc..add(InitialScreenEpisodesEvent()),
       child: BlocBuilder<ScreenEpisodesBloc, ScreenEpisodesState>(
         builder: (_, state) {
           if (state is LoadingScreenEpisodesState) {
             return LoadingScreen();
           }
           if (state is DataScreenEpisodesState) {
+            season1=[];
+            season2=[];
+            season3=[];
+            season4=[];
+            season5=[];
             for (int i = 0; i < state.episodesList.length; i++) {
               if (state.episodesList[i].season == 1) {
                 season1.add(state.episodesList[i]);

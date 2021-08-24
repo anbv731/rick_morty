@@ -36,10 +36,8 @@ class MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    //widget.routeScreen = ModalRoute.of(context).settings.arguments;
     
   selectedScreen = widget.routeScreen ?? 0;
-
   }
 
 
@@ -52,8 +50,6 @@ class MainScreenState extends State<MainScreen> {
             setState(() {
               selectedScreen = index;
             });
-
-            ;
           },
           items: [
             BottomNavigationBarItem(
@@ -94,6 +90,13 @@ class MainScreenState extends State<MainScreen> {
         body: widget.screensList[selectedScreen]);
   }
 
+  @override
+  void didUpdateWidget(covariant MainScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget != oldWidget) {
+      selectedScreen = widget.routeScreen ?? 0;
+    }
+  }
 
 }
   void main() {

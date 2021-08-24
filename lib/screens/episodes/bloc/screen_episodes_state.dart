@@ -38,3 +38,4 @@ class DataScreenEpisodesState extends ScreenEpisodesState {
   @override
   List<Object> get props => [episodesList];
 }
+

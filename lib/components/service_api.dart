@@ -46,12 +46,15 @@ class ServiceApi {
   }
 
   Future<List<Episode>> getSearchEpisodes(request) async {
-    final response = await _dio.get('Episodes/Filter?Name=$request');
+    final response = await _dio.get('Episodes/GetByName?Name=$request');
+    print( 'pfghjc $request');
     final results = (response.data)['data']
         .map((element) => Episode.fromJson(element))
         .toList();
 
+
     return List<Episode>.from(results);
+
   }
 
   Future<List<Location>> getLocations() async {
